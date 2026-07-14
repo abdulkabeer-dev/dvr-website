@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coverage Area & Service Feasibility | SREE DVR Broadband</title>
+    <meta name="description" content="View SREE DVR Broadband's fiber optic network coverage in Kurnool. Check feasibility for your street or village.">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+    <!-- Promo Ribbon -->
+    <div id="promoRibbon" class="promo-ribbon">
+        <span id="promoText">Loading offers...</span>
+        <button class="close-ribbon" onclick="dismissRibbon()">&times;</button>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="index.html" class="brand-logo">
+                <img src="images/logo.png" alt="SREE DVR Broadband">
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="plans.html" class="nav-link">Plans</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="coverage.html" class="nav-link active">Coverage</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="https://myaccount.dvrbroadband.net/" class="nav-link" target="_blank">My Account</a>
+                <button onclick="openEnquiryModal('Header CTA')" class="btn btn-secondary btn-sm">Get Connected</button>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-inner container animate-on-scroll fade-up">
+            <div class="page-breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="sep">/</span>
+                <span class="current">Coverage Area</span>
+            </div>
+            <h1 class="page-title">Network <span class="accent">Coverage Area</span></h1>
+            <p class="page-subtitle">Verify network feasibility in Kurnool district and nearby regions. We are actively expanding fiber optic rings to new zones.</p>
+        </div>
+    </section>
+
+    <!-- Interactive Feasibility Checker Section -->
+    <!-- Feasibility Checker Section -->
+    <section class="container" style="margin-top: -60px; position: relative; z-index: 30;" id="availability">
+        <div class="checker-card animate-on-scroll fade-up">
+            <div class="checker-info">
+                <div class="section-tag" style="background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.3); color:#fff; margin-bottom:var(--space-md);">
+                    <span class="material-icons" style="font-size:14px;">place</span> Feasibility Check
+                </div>
+                <h2>Broadband Availability Checker</h2>
+                <p>Verify if SREE DVR high-speed fiber services are live in your street or mandal.</p>
+            </div>
+            <div class="checker-form">
+                <div class="checker-input-wrapper">
+                    <input type="text" id="areaInput" class="checker-input" placeholder="Enter your Area / Village / Mandal (e.g. Budhawara Peta)">
+                </div>
+                <button onclick="checkFeasibility()" class="btn btn-secondary btn-lg">Check Coverage</button>
+            </div>
+            <div id="checkerResults" class="checker-results"></div>
+        </div>
+    </section>
+
+    <!-- Interactive Google Map Section -->
+    <section class="page-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll fade-up">
+                <span class="section-tag">Interactive Map</span>
+                <h2 class="section-title">Network Feasibility Boundaries</h2>
+                <p class="section-desc">Search or locate your home on the interactive map to verify close cable points.</p>
+                <div class="divider-line"></div>
+            </div>
+            
+            <div class="map-container animate-on-scroll fade-up">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.077271926665!2d78.03730221480572!3d15.828695989033327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb5e3afdc7e9be1%3A0x64319647485013ef!2sHotel%20SV%20Regency%20Kurnool!5e0!3m2!1sen!2sin!4v1689182390234!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Area Cards Grid Section -->
+    <section class="page-section-alt">
+        <div class="container">
+            <div class="section-header animate-on-scroll fade-up">
+                <span class="section-tag">Operational Sectors</span>
+                <h2 class="section-title">Covered Cities &amp; Regions</h2>
+                <p class="section-desc">Browse local neighborhoods where SREE DVR optical fibers are deployed and operational.</p>
+                <div class="divider-line"></div>
+            </div>
+            
+            <div class="plans-grid" id="coverageGrid">
+                <!-- Populated dynamically via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Expansion Banner Section -->
+    <section class="page-section">
+        <div class="container">
+            <div class="content-card animate-on-scroll fade-up" style="border-left: 5px solid var(--accent);">
+                <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-sm);">
+                    <span class="material-icons" style="font-size: 32px; color: var(--accent);">speed</span>
+                    <h3 style="font-size: 1.5rem;">Ongoing Fiber Expansion Plans</h3>
+                </div>
+                <p style="color: var(--gray-600); line-height: 1.7; margin-bottom: var(--space-lg);">If your area is marked as **Coming Soon** or isn't listed, please send us a connection request. SREE DVR Broadband prioritizes network ring construction in zones with higher booking inquiries. Our team pulls fiber lines immediately once a street crosses a minimum threshold of interested users.</p>
+                <button onclick="openEnquiryModal('Expansion Request')" class="btn btn-primary">Submit Expansion Request</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/logo.png" alt="SREE DVR Broadband" class="logo-img">
+                    <p class="footer-tagline">SREE DVR Broadband Pvt. Ltd. — Kurnool's premier fiber internet and IPTV service provider, delivering lightning-fast connectivity since 2018.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="material-icons" style="font-size:18px;">facebook</i></a>
+                        <a href="#" class="social-icon">
+                            <svg style="width:16px;height:16px;fill:currentColor;" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="https://wa.me/919133310422" target="_blank" class="social-icon">
+                            <i class="material-icons" style="font-size:18px;">chat</i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="plans.html">Broadband Plans</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="coverage.html">Coverage Area</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="admin.html">Admin Portal</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="footer-contact">
+                        <li><i class="material-icons">room</i><span>2nd Floor, S.V. Complex, R.S. Road, Kurnool - 518001</span></li>
+                        <li><i class="material-icons">phone</i><span>08518-442525</span></li>
+                        <li><i class="material-icons">chat</i><span>+91 9133310422</span></li>
+                        <li><i class="material-icons">email</i><span>sreedvrbroadbandpvtltd@gmail.com</span></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Locate Us</h3>
+                    <div class="map-container-footer">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.077271926665!2d78.03730221480572!3d15.828695989033327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb5e3afdc7e9be1%3A0x64319647485013ef!2sHotel%20SV%20Regency%20Kurnool!5e0!3m2!1sen!2sin!4v1689182390234!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <div style="margin-top:var(--space-md);">
+                        <h3 class="footer-heading">Legal</h3>
+                        <ul class="footer-links">
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms & Conditions</a></li>
+                            <li><a href="refund.html">Refund Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 SREE DVR Broadband Pvt. Ltd. All Rights Reserved.</p>
+                <p style="color:var(--gray-600);">Made with ❤️ for Kurnool</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-actions">
+        <a href="https://wa.me/919133310422" class="float-btn float-whatsapp" target="_blank" title="WhatsApp">
+            <span class="material-icons">chat</span>
+        </a>
+        <a href="tel:08518442525" class="float-btn float-call" title="Call Us">
+            <span class="material-icons">phone</span>
+        </a>
+        <button onclick="scrollToTop()" class="float-btn float-totop" id="scrollToTopBtn" title="Back to Top">
+            <span class="material-icons">arrow_upward</span>
+        </button>
+    </div>
+
+    <!-- Mobile Sticky Bar -->
+    <div class="mobile-sticky-bar">
+        <a href="tel:08518442525" class="bar-call"><span class="material-icons">phone</span> Call</a>
+        <a href="https://wa.me/919133310422" class="bar-whatsapp" target="_blank"><span class="material-icons">chat</span> WhatsApp</a>
+        <button onclick="openEnquiryModal('Mobile Bar')" class="bar-book"><span class="material-icons">bolt</span> Book Now</button>
+    </div>
+
+    <!-- Enquiry Modal -->
+    <div class="modal-overlay" id="enquiryModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeEnquiryModal()">&times;</button>
+            <h2 class="modal-title">Get Connected Today!</h2>
+            <p class="modal-desc">Fill this quick form and our team will call you back within 15 minutes.</p>
+            <form id="enquiryForm" onsubmit="submitEnquiry(event)">
+                <input type="hidden" id="selectedSource" value="General Modal">
+                <div class="form-group">
+                    <label class="form-label" for="clientName">Full Name</label>
+                    <input type="text" id="clientName" class="form-control" placeholder="Your full name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="clientPhone">Mobile Number</label>
+                    <input type="tel" id="clientPhone" class="form-control" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="clientPlan">Preferred Plan</label>
+                    <select id="clientPlan" class="form-control">
+                        <option value="40 Mbps Standard">40 Mbps Standard (₹299/mo)</option>
+                        <option value="100 Mbps Standard" selected>100 Mbps Standard (₹499/mo)</option>
+                        <option value="100 Mbps HD Combo">100 Mbps HD Combo (₹753/mo)</option>
+                        <option value="200 Mbps Premium">200 Mbps Premium (₹1099/mo)</option>
+                        <option value="300 Mbps Enterprise">300 Mbps Enterprise (₹1299/mo)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="clientArea">Your Area / Locality</label>
+                    <input type="text" id="clientArea" class="form-control" placeholder="e.g. Budhawara Peta, Kurnool" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="clientMsg">Notes (Optional)</label>
+                    <textarea id="clientMsg" class="form-control" placeholder="Any special requirements..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-secondary btn-block btn-lg">
+                    <span class="material-icons" style="font-size:18px;">flash_on</span>
+                    Book Connection
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    
+    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/main-pages.js"></script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+/* ============================================================
+   SREE DVR BROADBAND - ADMIN PORTAL STYLESHEET
+   ============================================================ */
+
+/* Login Card Container */
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--gray-100);
+    padding: var(--space-lg);
+}
+
+.login-card {
+    background-color: var(--bg-white);
+    padding: var(--space-2xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    width: 100%;
+    max-width: 420px;
+    border: 1px solid var(--gray-200);
+}
+
+/* Admin Dashboard Shell Layout */
+.admin-shell {
+    display: flex;
+    min-height: 100vh;
+}
+
+.admin-sidebar {
+    width: 260px;
+    background-color: var(--navy);
+    color: var(--gray-300);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    border-right: 4px solid var(--primary);
+}
+
+.sidebar-brand {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--bg-white);
+    margin-bottom: var(--space-2xl);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    flex-grow: 1;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--gray-300);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.sidebar-link:hover, .sidebar-link.active {
+    color: var(--bg-white);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-link.active {
+    background-color: var(--primary);
+    color: var(--bg-white);
+}
+
+.admin-main {
+    flex-grow: 1;
+    background-color: var(--bg-light);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+.admin-topbar {
+    height: 70px;
+    background-color: var(--bg-white);
+    border-bottom: 1px solid var(--gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--space-2xl);
+}
+
+.admin-content {
+    padding: var(--space-2xl);
+    flex-grow: 1;
+}
+
+/* System Alerts Config Banner */
+.config-alert-banner {
+    background-color: #FEF3C7;
+    border-left: 5px solid var(--secondary);
+    color: #92400E;
+    padding: var(--space-md) var(--space-2xl);
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Dashboard Metric Analytics Grid */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+}
+
+.metric-card {
+    background-color: var(--bg-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.metric-info h3 {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--space-xs);
+}
+
+.metric-info .metric-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1;
+}
+
+.metric-icon-wrapper {
+    background-color: rgba(var(--primary-rgb), 0.05);
+    color: var(--primary);
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+/* CRM Table Styles */
+.panel-card {
+    background-color: var(--bg-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--gray-200);
+    margin-bottom: var(--space-xl);
+}
+
+.panel-header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-lg);
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.crm-filters {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.crm-table-wrapper {
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--gray-200);
+}
+
+.crm-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    min-width: 800px;
+    font-size: 0.9rem;
+}
+
+.crm-table th, .crm-table td {
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.crm-table th {
+    background-color: var(--gray-50);
+    color: var(--navy);
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+.crm-table tr:hover td {
+    background-color: var(--gray-50);
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.badge-pending {
+    background-color: #FEF3C7;
+    color: #92400E;
+}
+
+.badge-contacted {
+    background-color: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary);
+}
+
+.badge-closed {
+    background-color: rgba(104, 179, 46, 0.1);
+    color: var(--accent);
+}
+
+/* Form layouts */
+.admin-grid-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+}
+
+@media (max-width: 768px) {
+    .admin-shell {
+        flex-direction: column;
+    }
+    .admin-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 4px solid var(--primary);
+    }
+    .sidebar-nav {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: var(--space-sm);
+    }
+    .sidebar-link {
+        white-space: nowrap;
+    }
+    .admin-grid-form {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,133 @@
+/* ============================================================
+   SREE DVR BROADBAND - CSS VARIABLES & DESIGN SYSTEM TOKENS
+   ============================================================ */
+
+:root {
+    /* ─── Brand Color Palette ─── */
+    --primary: #0A4D8C;
+    --primary-rgb: 10, 77, 140;
+    --primary-light: #1A6BB5;
+    --primary-dark: #073A6A;
+
+    --secondary: #F7941D;
+    --secondary-rgb: 247, 148, 29;
+    --secondary-light: #FFAD4A;
+    --secondary-dark: #D97B0D;
+
+    --accent: #68B32E;
+    --accent-rgb: 104, 179, 46;
+    --accent-light: #82D43A;
+    --accent-dark: #52900F;
+
+    --navy: #06264B;
+    --navy-rgb: 6, 38, 75;
+    --navy-light: #0D3A6E;
+
+    --bg-light: #F0F4F8;
+    --bg-white: #FFFFFF;
+    --bg-dark: #0A1628;
+
+    /* ─── Semantic Gradients ─── */
+    --gradient-hero: linear-gradient(135deg, #06264B 0%, #0A4D8C 50%, #0E6BAD 100%);
+    --gradient-hero-mesh: radial-gradient(ellipse at 20% 50%, rgba(10,77,140,0.4) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(247,148,29,0.12) 0%, transparent 50%), linear-gradient(160deg, #06264B 0%, #0A2B50 100%);
+    --gradient-accent: linear-gradient(135deg, #0A4D8C 0%, #1A75D1 100%);
+    --gradient-card: linear-gradient(180deg, #FFFFFF 0%, #F8FAFD 100%);
+    --gradient-orange: linear-gradient(135deg, #F7941D 0%, #FFBA5A 100%);
+    --gradient-blue: linear-gradient(135deg, #0A4D8C 0%, #2A8FE8 100%);
+    --gradient-green: linear-gradient(135deg, #52900F 0%, #82D43A 100%);
+    --gradient-dark: linear-gradient(160deg, #06264B 0%, #0A1628 100%);
+    --gradient-section-alt: linear-gradient(180deg, #F0F4F8 0%, #E8EEF5 100%);
+    --gradient-cta: linear-gradient(135deg, #0A4D8C 0%, #073A6A 40%, #06264B 100%);
+
+    /* ─── Glow & Neon Accents ─── */
+    --glow-primary: 0 0 20px rgba(10, 77, 140, 0.4), 0 0 40px rgba(10, 77, 140, 0.15);
+    --glow-secondary: 0 0 20px rgba(247, 148, 29, 0.5), 0 0 40px rgba(247, 148, 29, 0.2);
+    --glow-accent: 0 0 20px rgba(104, 179, 46, 0.4), 0 0 40px rgba(104, 179, 46, 0.15);
+
+    /* ─── Neutral Palette ─── */
+    --gray-50: #F8FAFC;
+    --gray-100: #F1F5F9;
+    --gray-200: #E2E8F0;
+    --gray-300: #CBD5E1;
+    --gray-400: #94A3B8;
+    --gray-500: #64748B;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-800: #1E293B;
+    --gray-900: #0F172A;
+
+    /* ─── Typography Config ─── */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+
+    /* ─── Spacing System ─── */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    --space-4xl: 6rem;
+    --space-5xl: 8rem;
+
+    /* ─── Layout Dimensions ─── */
+    --header-height: 80px;
+    --container-max-width: 1200px;
+
+    /* ─── Shadows & Elevation ─── */
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 12px 24px -4px rgba(0, 0, 0, 0.1), 0 6px 12px -4px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 24px 48px -8px rgba(0, 0, 0, 0.12), 0 12px 24px -8px rgba(0, 0, 0, 0.06);
+    --shadow-2xl: 0 40px 80px -16px rgba(0, 0, 0, 0.15);
+    --shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+    --shadow-primary: 0 8px 24px rgba(10, 77, 140, 0.25);
+    --shadow-secondary: 0 8px 24px rgba(247, 148, 29, 0.3);
+    --shadow-accent: 0 8px 24px rgba(104, 179, 46, 0.25);
+
+    /* ─── Border Radius ─── */
+    --radius-xs: 0.25rem;
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-2xl: 2rem;
+    --radius-full: 9999px;
+
+    /* ─── Glassmorphism Presets ─── */
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-bg-light: rgba(255, 255, 255, 0.92);
+    --glass-bg-dark: rgba(6, 38, 75, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.25);
+    --glass-border-dark: rgba(255, 255, 255, 0.1);
+    --glass-blur: blur(16px);
+    --glass-blur-lg: blur(24px);
+    --glass-blur-sm: blur(8px);
+
+    /* ─── Animation Transitions ─── */
+    --transition-instant: 0.08s ease;
+    --transition-fast: 0.18s ease;
+    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition-spring: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    /* ─── Z-Index Hierarchy ─── */
+    --z-negative: -1;
+    --z-normal: 1;
+    --z-above: 10;
+    --z-sticky: 100;
+    --z-overlay: 500;
+    --z-modal: 1000;
+    --z-tooltip: 2000;
+    --z-max: 9999;
+
+    /* ─── Border Tokens ─── */
+    --border-subtle: 1px solid var(--gray-100);
+    --border-normal: 1px solid var(--gray-200);
+    --border-primary: 1px solid rgba(var(--primary-rgb), 0.2);
+}
+
+

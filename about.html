@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | SREE DVR Broadband Pvt. Ltd.</title>
+    <meta name="description" content="Discover SREE DVR Broadband's journey, our mission, vision, values, and how we deliver Kurnool's most reliable fiber optic network.">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+    <!-- Promo Ribbon -->
+    <div id="promoRibbon" class="promo-ribbon">
+        <span id="promoText">Loading offers...</span>
+        <button class="close-ribbon" onclick="dismissRibbon()">&times;</button>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="index.html" class="brand-logo">
+                <img src="images/logo.png" alt="SREE DVR Broadband">
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="plans.html" class="nav-link">Plans</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="coverage.html" class="nav-link">Coverage</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="https://myaccount.dvrbroadband.net/" class="nav-link" target="_blank">My Account</a>
+                <button onclick="openEnquiryModal('Header CTA')" class="btn btn-secondary btn-sm">Get Connected</button>
+            </nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-inner container animate-on-scroll fade-up">
+            <div class="page-breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="sep">/</span>
+                <span class="current">About Us</span>
+            </div>
+            <h1 class="page-title">Our <span class="accent">Company Story</span></h1>
+            <p class="page-subtitle">Providing high-speed, dynamic, and reliable fiber optic network infrastructures in Kurnool district since 2017.</p>
+        </div>
+    </section>
+
+    <!-- About Content Section -->
+    <section class="page-section">
+        <div class="container">
+            <div class="split-layout">
+                <div class="animate-on-scroll slide-left">
+                    <div class="section-tag">
+                        <span class="material-icons" style="font-size:14px;">fiber_optic</span>
+                        Pioneering Gigabit Connectivity
+                    </div>
+                    <h2 class="section-title" style="text-align:left; margin-bottom:var(--space-md);">Pioneering Gigabit Connectivity</h2>
+                    <p style="margin-bottom:var(--space-md); color:var(--gray-600);">Welcome to SREE DVR Broadband Pvt. Ltd.! We are the region's leading and innovative Information and Communication Technology (ICT) and Internet Service Provider (ISP), licensed by the Department of Telecommunication (DoT).</p>
+                    <p style="margin-bottom:var(--space-md); color:var(--gray-600);">Our high-capacity fiber optical networks deliver high-speed, low-latency broadband right inside homes, offices, schools, and mandals. By bypassing outdated copper infrastructures, we enable seamless 4K UHD television viewing, corporate leased line setups, and video surveillance streaming.</p>
+                    <p style="color:var(--gray-600);">Choose SREE DVR Broadband for reliable network SLA guarantees, localized customer help desks, and dynamic digital TV packages that need no additional set-top boxes.</p>
+                </div>
+                <div class="split-image animate-on-scroll slide-right">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="SREE DVR Team at work">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission Strip -->
+    <section class="page-section-alt">
+        <div class="container">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-xl);" class="split-layout">
+                <div class="value-card animate-on-scroll slide-left" style="border-top: 4px solid var(--primary);">
+                    <div class="value-icon" style="background:rgba(var(--primary-rgb),0.1); color:var(--primary);">
+                        <span class="material-icons">visibility</span>
+                    </div>
+                    <h3 style="font-size:1.3rem; margin-bottom:var(--space-sm);">Our Vision</h3>
+                    <p style="color:var(--gray-600); line-height:1.7;">To build a fully digital Kurnool region where every home, village, and mandal has direct access to high-capacity symmetric gigabit bandwidth, raising the bar of local digital learning and corporate ease.</p>
+                </div>
+                <div class="value-card animate-on-scroll slide-right" style="border-top: 4px solid var(--secondary);">
+                    <div class="value-icon" style="background:rgba(var(--secondary-rgb),0.1); color:var(--secondary);">
+                        <span class="material-icons">explore</span>
+                    </div>
+                    <h3 style="font-size:1.3rem; margin-bottom:var(--space-sm);">Our Mission</h3>
+                    <p style="color:var(--gray-600); line-height:1.7;">To engineer resilient, fiber-to-the-home networks and cost-effective IPTV combos. We strive to provide true unlimited packages with zero speed throttling, backed by exceptional 1-hour customer support resolutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Strip -->
+    <section class="stats-band">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card animate-on-scroll fade-up stagger-1">
+                    <div class="stat-icon-wrapper"><span class="material-icons">groups</span></div>
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">Active Users</div>
+                </div>
+                <div class="stat-card animate-on-scroll fade-up stagger-2">
+                    <div class="stat-icon-wrapper"><span class="material-icons">settings_ethernet</span></div>
+                    <div class="stat-number">500+ KM</div>
+                    <div class="stat-label">Fiber Laid</div>
+                </div>
+                <div class="stat-card animate-on-scroll fade-up stagger-3">
+                    <div class="stat-icon-wrapper"><span class="material-icons">trending_up</span></div>
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime SLA</div>
+                </div>
+                <div class="stat-card animate-on-scroll fade-up stagger-4">
+                    <div class="stat-icon-wrapper"><span class="material-icons">support_agent</span></div>
+                    <div class="stat-number">1 Hour</div>
+                    <div class="stat-label">Avg Support Resolution</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section class="page-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll fade-up">
+                <span class="section-tag">Our Culture</span>
+                <h2 class="section-title">Our Core Values</h2>
+                <p class="section-desc">These basic guidelines define our day-to-day work, engineering parameters, and customer communication.</p>
+                <div class="divider-line"></div>
+            </div>
+            
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-xl);" class="split-layout">
+                <div class="value-card text-center animate-on-scroll fade-up stagger-1" style="border-top:4px solid var(--primary);">
+                    <span class="material-icons" style="font-size:44px; color:var(--primary); margin-bottom:var(--space-sm);">handshake</span>
+                    <h3 style="margin-bottom:var(--space-xs);">Integrity First</h3>
+                    <p style="color:var(--gray-600); font-size:0.9rem; line-height:1.6;">No false bandwidth statements, hidden FUP throttling, or deceptive billing. We keep billing clear and speeds symmetric.</p>
+                </div>
+                <div class="value-card text-center animate-on-scroll fade-up stagger-2" style="border-top:4px solid var(--secondary);">
+                    <span class="material-icons" style="font-size:44px; color:var(--secondary); margin-bottom:var(--space-sm);">engineering</span>
+                    <h3 style="margin-bottom:var(--space-xs);">Engineering Excellence</h3>
+                    <p style="color:var(--gray-600); font-size:0.9rem; line-height:1.6;">We lay premium armored fiber lines and run high-efficiency network routing rigs to avoid packet losses and line failure spikes.</p>
+                </div>
+                <div class="value-card text-center animate-on-scroll fade-up stagger-3" style="border-top:4px solid var(--accent);">
+                    <span class="material-icons" style="font-size:44px; color:var(--accent); margin-bottom:var(--space-sm);">volunteer_activism</span>
+                    <h3 style="margin-bottom:var(--space-xs);">Customer Focus</h3>
+                    <p style="color:var(--gray-600); font-size:0.9rem; line-height:1.6;">We treat every customer request with urgency. Our field technicians and local operators live in Kurnool for instant responses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/logo.png" alt="SREE DVR Broadband" class="logo-img">
+                    <p class="footer-tagline">SREE DVR Broadband Pvt. Ltd. — Kurnool's premier fiber internet and IPTV service provider, delivering lightning-fast connectivity since 2018.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="material-icons" style="font-size:18px;">facebook</i></a>
+                        <a href="#" class="social-icon">
+                            <svg style="width:16px;height:16px;fill:currentColor;" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="https://wa.me/919133310422" target="_blank" class="social-icon">
+                            <i class="material-icons" style="font-size:18px;">chat</i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="plans.html">Broadband Plans</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="coverage.html">Coverage Area</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="admin.html">Admin Portal</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="footer-contact">
+                        <li><i class="material-icons">room</i><span>2nd Floor, S.V. Complex, R.S. Road, Kurnool - 518001</span></li>
+                        <li><i class="material-icons">phone</i><span>08518-442525</span></li>
+                        <li><i class="material-icons">chat</i><span>+91 9133310422</span></li>
+                        <li><i class="material-icons">email</i><span>sreedvrbroadbandpvtltd@gmail.com</span></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer-heading">Locate Us</h3>
+                    <div class="map-container-footer">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.077271926665!2d78.03730221480572!3d15.828695989033327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb5e3afdc7e9be1%3A0x64319647485013ef!2sHotel%20SV%20Regency%20Kurnool!5e0!3m2!1sen!2sin!4v1689182390234!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <div style="margin-top:var(--space-md);">
+                        <h3 class="footer-heading">Legal</h3>
+                        <ul class="footer-links">
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms & Conditions</a></li>
+                            <li><a href="refund.html">Refund Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 SREE DVR Broadband Pvt. Ltd. All Rights Reserved.</p>
+                <p style="color:var(--gray-600);">Made with ❤️ for Kurnool</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-actions">
+        <a href="https://wa.me/919133310422" class="float-btn float-whatsapp" target="_blank" title="WhatsApp">
+            <span class="material-icons">chat</span>
+        </a>
+        <a href="tel:08518442525" class="float-btn float-call" title="Call Us">
+            <span class="material-icons">phone</span>
+        </a>
+        <button onclick="scrollToTop()" class="float-btn float-totop" id="scrollToTopBtn" title="Back to Top">
+            <span class="material-icons">arrow_upward</span>
+        </button>
+    </div>
+
+    <!-- Mobile Sticky Bar -->
+    <div class="mobile-sticky-bar">
+        <a href="tel:08518442525" class="bar-call"><span class="material-icons">phone</span> Call</a>
+        <a href="https://wa.me/919133310422" class="bar-whatsapp" target="_blank"><span class="material-icons">chat</span> WhatsApp</a>
+        <button onclick="openEnquiryModal('Mobile Bar')" class="bar-book"><span class="material-icons">bolt</span> Book Now</button>
+    </div>
+
+    <!-- Enquiry Modal -->
+    <div class="modal-overlay" id="enquiryModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeEnquiryModal()">&times;</button>
+            <h2 class="modal-title">Get Connected Today!</h2>
+            <p class="modal-desc">Fill this quick form and our team will call you back within 15 minutes.</p>
+            <form id="enquiryForm" onsubmit="submitEnquiry(event)">
+                <input type="hidden" id="selectedSource" value="General Modal">
+                <div class="form-group">
+                    <label class="form-label" for="clientName">Full Name</label>
+                    <input type="text" id="clientName" class="form-control" placeholder="Your full name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="clientPhone">Mobile Number</label>
+                    <input type="tel" id="clientPhone" class="form-control" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="clientPlan">Preferred Plan</label>
+                    <select id="clientPlan" class="form-control">
+                        <option value="40 Mbps Standard">40 Mbps Standard (₹299/mo)</option>
+                        <option value="100 Mbps Standard" selected>100 Mbps Standard (₹499/mo)</option>
+                        <option value="100 Mbps HD Combo">100 Mbps HD Combo (₹753/mo)</option>
+                        <option value="200 Mbps Premium">200 Mbps Premium (₹1099/mo)</option>
+                        <option value="300 Mbps Enterprise">300 Mbps Enterprise (₹1299/mo)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="clientArea">Your Area / Locality</label>
+                    <input type="text" id="clientArea" class="form-control" placeholder="e.g. Budhawara Peta, Kurnool" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="clientMsg">Notes (Optional)</label>
+                    <textarea id="clientMsg" class="form-control" placeholder="Any special requirements..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-secondary btn-block btn-lg">
+                    <span class="material-icons" style="font-size:18px;">flash_on</span>
+                    Book Connection
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/main-pages.js"></script>
+
+</body>
+</html>

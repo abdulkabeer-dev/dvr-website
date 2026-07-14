@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard Portal | SREE DVR Broadband</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+    <!-- 1. Firebase Config Alert Banner -->
+    <div id="configAlertBanner" class="config-alert-banner" style="display: none;">
+        <span><span class="material-icons" style="vertical-align: text-bottom; font-size: 18px;">warning</span> <strong>Firebase Connection Offline:</strong> The portal is currently running in local storage fallback mode (Demo mode). Enter your configuration keys to activate live Firestore syncing.</span>
+        <button onclick="openConfigModal()" class="btn btn-secondary btn-sm">Connect Firebase</button>
+    </div>
+
+    <!-- 2. Secure Login Card Portal (Displays when not authenticated) -->
+    <div id="loginPortal" class="login-container">
+        <div class="login-card">
+            <div style="text-align: center; margin-bottom: var(--space-xl);">
+                <img src="images/logo.png" alt="SREE DVR Broadband" style="height: 65px; margin: 0 auto; display: block;">
+                <h2 style="font-size: 1.5rem; margin-top: var(--space-md);">Admin Control Panel</h2>
+            </div>
+            
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label class="form-label" for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="admin@dvrbroadband.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" placeholder="admin" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block btn-lg">Secure Sign In</button>
+            </form>
+            
+            <div style="text-align: center; margin-top: var(--space-md);">
+                <a href="index.html" style="font-size: 0.85rem; color: var(--gray-500); text-decoration: underline;">&larr; Back to Public Portal</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Admin Main Dashboard Layout (Displays when authenticated) -->
+    <div id="adminLayout" class="admin-shell" style="display: none;">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-brand">
+                <span class="material-icons">admin_panel_settings</span>
+                DVR Control CMS
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="sidebar-link active" onclick="switchAdminTab('dashboard', this)"><span class="material-icons">dashboard</span> Dashboard</div>
+                <div class="sidebar-link" onclick="switchAdminTab('enquiries', this)"><span class="material-icons">lead_control_camera</span> Enquiries</div>
+                <div class="sidebar-link" onclick="switchAdminTab('plans', this)"><span class="material-icons">router</span> Broadband Plans</div>
+                <div class="sidebar-link" onclick="switchAdminTab('offers', this)"><span class="material-icons">local_offer</span> Offers & Ribbons</div>
+                <div class="sidebar-link" onclick="switchAdminTab('banners', this)"><span class="material-icons">view_carousel</span> Hero Banners</div>
+                <div class="sidebar-link" onclick="switchAdminTab('coverage', this)"><span class="material-icons">map</span> Coverage Areas</div>
+                <div class="sidebar-link" onclick="switchAdminTab('testimonials', this)"><span class="material-icons">rate_review</span> Testimonials</div>
+                <div class="sidebar-link" onclick="switchAdminTab('faqs', this)"><span class="material-icons">question_answer</span> FAQs CMS</div>
+                <div class="sidebar-link" onclick="switchAdminTab('settings', this)"><span class="material-icons">settings</span> Settings</div>
+                <div class="sidebar-link" onclick="switchAdminTab('firebase-conn', this)"><span class="material-icons">cloud</span> Firebase Connect</div>
+            </nav>
+            
+            <div class="sidebar-link" onclick="handleLogout()" style="color: #FCA5A5; margin-top: auto; border-top: 1px solid rgba(255,255,255,0.05); padding-top: var(--space-md);">
+                <span class="material-icons">logout</span> Sign Out
+            </div>
+        </aside>
+
+        <!-- Main Display Panel -->
+        <main class="admin-main">
+            <!-- Topbar -->
+            <div class="admin-topbar">
+                <h2 id="panelTabTitle" style="font-size: 1.35rem;">System Analytics</h2>
+                <div style="display: flex; align-items: center; gap: var(--space-md);">
+                    <span id="liveStatusBadge" class="status-badge badge-closed">Live Sync Mode</span>
+                    <span style="font-weight: 600; color: var(--navy);" id="adminUserEmail">admin@dvrbroadband.com</span>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="admin-content">
+
+                <!-- PANEL 1: DASHBOARD ANALYTICS -->
+                <div id="tab-dashboard" class="admin-tab-content">
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-info">
+                                <h3>Total Leads</h3>
+                                <div class="metric-value" id="statTotalEnquiries">0</div>
+                            </div>
+                            <div class="metric-icon-wrapper"><span class="material-icons">contacts</span></div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-info">
+                                <h3>Today's Leads</h3>
+                                <div class="metric-value" id="statTodayEnquiries">0</div>
+                            </div>
+                            <div class="metric-icon-wrapper" style="color:var(--secondary); background-color: rgba(247,148,29,0.05);"><span class="material-icons">today</span></div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-info">
+                                <h3>Pending Actions</h3>
+                                <div class="metric-value" id="statPendingEnquiries">0</div>
+                            </div>
+                            <div class="metric-icon-wrapper" style="color:#EF4444; background-color: rgba(239,68,68,0.05);"><span class="material-icons">pending_actions</span></div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-info">
+                                <h3>Uptime Target</h3>
+                                <div class="metric-value">99.9%</div>
+                            </div>
+                            <div class="metric-icon-wrapper" style="color:var(--accent); background-color: rgba(104,179,46,0.05);"><span class="material-icons">verified_user</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Enquiries -->
+                    <div class="panel-card">
+                        <div class="panel-header-actions">
+                            <h3>Recent Connection Leads</h3>
+                            <button onclick="switchAdminTab('enquiries', null)" class="btn btn-outline btn-sm">Manage All Leads &rarr;</button>
+                        </div>
+                        <div class="crm-table-wrapper">
+                            <table class="crm-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Phone</th>
+                                        <th>Locality/Area</th>
+                                        <th>Plan Choice</th>
+                                        <th>Date Submitted</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentLeadsTableBody">
+                                    <!-- Dynamic rows populate here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL 2: ENQUIRIES LEAD MANAGER -->
+                <div id="tab-enquiries" class="admin-tab-content" style="display: none;">
+                    <div class="panel-card">
+                        <div class="panel-header-actions">
+                            <div style="display: flex; gap: var(--space-md); flex-grow: 1; max-width: 600px;">
+                                <input type="text" id="leadSearchInput" class="form-control" placeholder="Search leads by name, phone, area..." onkeyup="filterLeads()">
+                                <select id="leadStatusFilter" class="form-control" style="width: 180px;" onchange="filterLeads()">
+                                    <option value="All">All Statuses</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Contacted">Contacted</option>
+                                    <option value="Closed">Closed</option>
+                                </select>
+                            </div>
+                            <button onclick="exportLeadsCSV()" class="btn btn-accent btn-sm"><span class="material-icons" style="font-size: 16px; vertical-align: text-bottom;">download</span> Export CSV</button>
+                        </div>
+                        
+                        <div class="crm-table-wrapper">
+                            <table class="crm-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Phone/Email</th>
+                                        <th>Area Locality</th>
+                                        <th>Plan Preference</th>
+                                        <th>Contact Mode</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="allLeadsTableBody">
+                                    <!-- Dynamic list -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL 3: PLANS CMS CRUD -->
+                <div id="tab-plans" class="admin-tab-content" style="display: none;">
+                    <div class="panel-card">
+                        <div class="panel-header-actions">
+                            <h3>Active Subscription Packages</h3>
+                            <button onclick="openAddPlanModal()" class="btn btn-secondary btn-sm"><span class="material-icons" style="font-size: 16px; vertical-align: text-bottom;">add</span> Add New Plan</button>
+                        </div>
+                        
+                        <div class="crm-table-wrapper">
+                            <table class="crm-table">
+                                <thead>
+                                    <tr>
+                                        <th>Plan Name</th>
+                                        <th>Speed Tier</th>
+                                        <th>Monthly Cost</th>
+                                        <th>Security Deposit</th>
+                                        <th>Subscription Type</th>
+                                        <th>Dish IPTV Mode</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="adminPlansTableBody">
+                                    <!-- Dynamic plans CRUD rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL 4: OFFERS CMS -->
+                <div id="tab-offers" class="admin-tab-content" style="display: none;">
+                    <div class="panel-card" style="max-width: 600px;">
+                        <h3>Promotional Ribbon Offer Banner</h3>
+                        <p style="color: var(--gray-500); margin-bottom: var(--space-lg);">This ribbon displays at the top of every page. Toggle visibility, background hex colors, and redirect buttons.</p>
+                        
+                        <form id="adminOfferForm" onsubmit="saveRibbonSettings(event)">
+                            <div class="form-group">
+                                <label class="form-label" for="offerText">Offer Description Text</label>
+                                <input type="text" id="offerText" class="form-control" required>
+                            </div>
+                            <div class="admin-grid-form">
+                                <div class="form-group">
+                                    <label class="form-label" for="offerCtaText">CTA Button Text</label>
+                                    <input type="text" id="offerCtaText" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="offerCtaUrl">CTA Redirect Link</label>
+                                    <input type="text" id="offerCtaUrl" class="form-control">
+                                </div>
+                            </div>
+                            <div class="admin-grid-form">
+                                <div class="form-group">
+                                    <label class="form-label" for="offerColor">Hex Background Color</label>
+                                    <input type="color" id="offerColor" class="form-control" style="height: 46px; padding: 3px;">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Ribbon Visibility</label>
+                                    <div style="display: flex; gap: var(--space-lg); margin-top: var(--space-sm);">
+                                        <label><input type="radio" name="offerVisible" value="true"> Active</label>
+                                        <label><input type="radio" name="offerVisible" value="false"> Hidden</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block" style="margin-top: var(--space-md);">Save Ribbon Settings</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- PANEL 5: HERO BANNERS CMS -->
+                <div id="tab-banners" class="admin-tab-content" style="display: none;">
+                    <div class="panel-card">
+                        <div class="panel-header-actions">
+                            <h3>Homepage Hero Slider Banners</h3>
+                            <button onclick="openAddBannerModal()" class="btn btn-secondary btn-sm"><span class="material-icons" style="font-size:16px; vertical-align:text-bottom;">add</span> Add Banner</button>
+                        </div>
+                        
+                        <div class="crm-table-wrapper">
+                            <table class="crm-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order</th>
+                                        <th>Slider Badge</th>
+                                        <th>Slider Title</th>
+                                        <th>Image URL</th>
+                                        <th>Visibility</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="adminBannersTableBody">
+                                    <!-- Dynamic sliders -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL 6: COVERAGE CMS -->
+                <div id="tab-coverage" class="admin-tab-content" style="display: none;">
+                    <div class="panel-card">
+                        <div class="panel-header-actions">
+                            <h3>Service Feasibility Locations</h3>
+                            <button onclick="openAddCoverageModal()" class="btn btn-secondary btn-sm"><span class="material-icons" style="font-size:16px; vertical-align:text-bottom;">add</span> Add Area</button>
+                        </div>
+                        
+                        <div class="crm-table-wrapper">
+                            <table class="crm-table">
+                                <thead>
+                                    <tr>
+                                        <th>Area/Neighborhood</th>
+                                        <th>City</th>
+                                        <th>Mandal</th>
+                                        <th>District</th>
+                                        <th>Feasibility Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="adminCoverageTableBody">
+                                    <!-- Dynamic coverage items -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL 7: TESTIMONIALS CMS -->
+                <div id="tab-testimonials" class="admin-tab-content" style="display: none;">
+                    <div class="panel-card">
+                        <div class="panel-header-actions">
+                            <h3>Testimonial Review Grid</h3>
+                            <button onclick="openAddTestimonialModal()" class="btn btn-secondary btn-sm"><span class="material-icons" style="font-size:16px; vertical-align:text-bottom;">add</span> Add Testimonial</button>
+                        </div>
+                        
+                        <div class="crm-table-wrapper">
+                            <table class="crm-table">
+                                <thead>
+                                    <tr>
+                                        <th>Customer Name</th>
+                                        <th>Location</th>
+                                        <th>Rating Stars</th>
+                                        <th>Feedback Comment</th>
+                                        <th>Visible</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="adminTestimonialsTableBody">
+                                    <!-- Dynamic reviews CRUD -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL 8: FAQ CMS -->
+                <div id="tab-faqs" class="admin-tab-content" style="display: none;">
+                    <div class="panel-card">
+                        <div class="panel-header-actions">
+                            <h3>FAQ Accordions Manager</h3>
+                            <button onclick="openAddFaqModal()" class="btn btn-secondary btn-sm"><span class="material-icons" style="font-size:16px; vertical-align:text-bottom;">add</span> Add Question</button>
+                        </div>
+                        
+                        <div class="crm-table-wrapper">
+                            <table class="crm-table">
+                                <thead>
+                                    <tr>
+                                        <th>Sort Order</th>
+                                        <th>Category</th>
+                                        <th>FAQ Question</th>
+                                        <th>FAQ Answer Details</th>
+                                        <th>Visible</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="adminFaqTableBody">
+                                    <!-- Dynamic FAQ list -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL 9: SITE SETTINGS -->
+                <div id="tab-settings" class="admin-tab-content" style="display: none;">
+                    <div class="panel-card" style="max-width: 700px;">
+                        <h3>SREE DVR Contact & Meta Parameters</h3>
+                        <p style="color:var(--gray-500); margin-bottom:var(--space-lg);">Modify support numbers, business hours, and social redirects dynamically.</p>
+                        
+                        <form id="adminSettingsForm" onsubmit="saveSiteSettings(event)">
+                            <div class="admin-grid-form">
+                                <div class="form-group">
+                                    <label class="form-label" for="settingPhone">Helpline Phone</label>
+                                    <input type="text" id="settingPhone" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="settingWhatsapp">WhatsApp Number (No country code)</label>
+                                    <input type="text" id="settingWhatsapp" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="admin-grid-form">
+                                <div class="form-group">
+                                    <label class="form-label" for="settingEmail">Business Email</label>
+                                    <input type="email" id="settingEmail" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="settingHours">Customer Support Hours</label>
+                                    <input type="text" id="settingHours" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="settingAddress">Physical Office Address</label>
+                                <input type="text" id="settingAddress" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="settingMap">Google Maps Embed Embed Source Link</label>
+                                <input type="text" id="settingMap" class="form-control">
+                            </div>
+                            <div class="admin-grid-form">
+                                <div class="form-group">
+                                    <label class="form-label" for="settingMetaTitle">SEO Meta Title</label>
+                                    <input type="text" id="settingMetaTitle" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="settingMetaDesc">SEO Meta Description</label>
+                                    <input type="text" id="settingMetaDesc" class="form-control">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Update Settings</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- PANEL 10: FIREBASE CONNECT -->
+                <div id="tab-firebase-conn" class="admin-tab-content" style="display: none;">
+                    <div class="panel-card" style="max-width: 600px;">
+                        <h3>Configure Firebase Integration Keys</h3>
+                        <p style="color:var(--gray-500); margin-bottom:var(--space-lg);">Provide your Firebase Web SDK config parameters below to enable live cloud Firestore integrations and authentication.</p>
+                        
+                        <form id="firebaseConfigForm" onsubmit="saveFirebaseCredentials(event)">
+                            <div class="form-group">
+                                <label class="form-label" for="fbApiKey">API Key (apiKey) *</label>
+                                <input type="text" id="fbApiKey" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="fbProjId">Project ID (projectId) *</label>
+                                <input type="text" id="fbProjId" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="fbAuthDomain">Auth Domain (authDomain)</label>
+                                <input type="text" id="fbAuthDomain" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="fbStorageBucket">Storage Bucket (storageBucket)</label>
+                                <input type="text" id="fbStorageBucket" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="fbAppId">App ID (appId)</label>
+                                <input type="text" id="fbAppId" class="form-control">
+                            </div>
+                            
+                            <div style="display: flex; gap: var(--space-md); margin-top: var(--space-lg);">
+                                <button type="submit" class="btn btn-secondary flex-grow">Connect & Sync</button>
+                                <button type="button" onclick="resetFirebaseCredentials()" class="btn btn-outline">Clear Connection Keys</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL 1: ADD/EDIT PLANS -->
+    <div class="modal-overlay" id="planModal">
+        <div class="modal-card" style="max-width: 600px;">
+            <button class="modal-close" onclick="closeModal('planModal')">&times;</button>
+            <h2 id="planModalTitle" class="modal-title">Create Subscription Package</h2>
+            
+            <form id="planForm" onsubmit="savePlanData(event)">
+                <input type="hidden" id="editPlanId" value="">
+                <div class="admin-grid-form">
+                    <div class="form-group">
+                        <label class="form-label" for="planFormName">Plan Name *</label>
+                        <input type="text" id="planFormName" class="form-control" placeholder="e.g. Fiber 100 Mbps" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="planFormSpeed">Speed Tier *</label>
+                        <input type="text" id="planFormSpeed" class="form-control" placeholder="e.g. 100 Mbps" required>
+                    </div>
+                </div>
+                
+                <div class="admin-grid-form">
+                    <div class="form-group">
+                        <label class="form-label" for="planFormPrice">Monthly Cost (₹) *</label>
+                        <input type="number" id="planFormPrice" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="planFormDeposit">Security Deposit (₹) *</label>
+                        <input type="number" id="planFormDeposit" class="form-control" value="2500" required>
+                    </div>
+                </div>
+                
+                <div class="admin-grid-form">
+                    <div class="form-group">
+                        <label class="form-label" for="planFormType">Plan Category Type</label>
+                        <select id="planFormType" class="form-control">
+                            <option value="Unlimited">Unlimited Fiber</option>
+                            <option value="Internet + IPTV">Internet + IPTV Combo</option>
+                            <option value="IPTV Dedicated">IPTV Dedicated</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="planFormDish">Dish IPTV Mode</label>
+                        <input type="text" id="planFormDish" class="form-control" placeholder="e.g. HD IPTV App, No Dish">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="planFormBest">Usage Tag Profile</label>
+                    <input type="text" id="planFormBest" class="form-control" placeholder="e.g. UHD Streaming, WFH, 5+ Devices">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="planFormFeatures">Plan Features (One per line) *</label>
+                    <textarea id="planFormFeatures" class="form-control" style="height: 80px;" placeholder="True Unlimited Data&#10;Symmetric Speeds&#10;Router Included" required></textarea>
+                </div>
+                
+                <div class="admin-grid-form" style="align-items: center;">
+                    <div class="form-group">
+                        <label><input type="checkbox" id="planFormPopular"> Highlight Plan as Popular</label>
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" id="planFormActive" checked> Plan active for sales display</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-secondary btn-block btn-lg">Save Plan Details</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 2: ADD/EDIT SLIDER BANNERS -->
+    <div class="modal-overlay" id="bannerModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('bannerModal')">&times;</button>
+            <h2 id="bannerModalTitle" class="modal-title">Create Slider Banner</h2>
+            
+            <form id="bannerForm" onsubmit="saveBannerData(event)">
+                <input type="hidden" id="editBannerId" value="">
+                <div class="form-group">
+                    <label class="form-label" for="bannerFormTitle">Banner Slide Title *</label>
+                    <input type="text" id="bannerFormTitle" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="bannerFormSubtitle">Sub-title Description *</label>
+                    <input type="text" id="bannerFormSubtitle" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="bannerFormImage">Image URL *</label>
+                    <input type="text" id="bannerFormImage" class="form-control" placeholder="Paste Unsplash or media image url" required>
+                </div>
+                <div class="admin-grid-form">
+                    <div class="form-group">
+                        <label class="form-label" for="bannerFormBadge">Offer Tag Badge</label>
+                        <input type="text" id="bannerFormBadge" class="form-control" placeholder="e.g. Monsoon Offer">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="bannerFormOrder">Display Order Number</label>
+                        <input type="number" id="bannerFormOrder" class="form-control" value="1" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-secondary btn-block btn-lg">Save Banner</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 3: ADD/EDIT COVERAGES -->
+    <div class="modal-overlay" id="coverageModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('coverageModal')">&times;</button>
+            <h2 id="coverageModalTitle" class="modal-title">Add Feasibility Location</h2>
+            
+            <form id="coverageForm" onsubmit="saveCoverageData(event)">
+                <input type="hidden" id="editCoverageId" value="">
+                <div class="form-group">
+                    <label class="form-label" for="covFormArea">Area / Street Name *</label>
+                    <input type="text" id="covFormArea" class="form-control" placeholder="e.g. Budhawara Peta" required>
+                </div>
+                <div class="admin-grid-form">
+                    <div class="form-group">
+                        <label class="form-label" for="covFormCity">City *</label>
+                        <input type="text" id="covFormCity" class="form-control" value="Kurnool" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="covFormMandal">Mandal</label>
+                        <input type="text" id="covFormMandal" class="form-control" value="Kurnool">
+                    </div>
+                </div>
+                <div class="admin-grid-form">
+                    <div class="form-group">
+                        <label class="form-label" for="covFormDist">District *</label>
+                        <input type="text" id="covFormDist" class="form-control" value="Kurnool" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="covFormStatus">Status Feasibility</label>
+                        <select id="covFormStatus" class="form-control">
+                            <option value="available">Service Available (Active)</option>
+                            <option value="coming-soon">Coming Soon</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-secondary btn-block btn-lg">Save Location</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 4: ADD/EDIT TESTIMONIALS -->
+    <div class="modal-overlay" id="testimonialModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('testimonialModal')">&times;</button>
+            <h2 id="testimonialModalTitle" class="modal-title">Create Customer Feedback</h2>
+            
+            <form id="testimonialForm" onsubmit="saveTestimonialData(event)">
+                <input type="hidden" id="editTestimonialId" value="">
+                <div class="admin-grid-form">
+                    <div class="form-group">
+                        <label class="form-label" for="tstFormName">Customer Name *</label>
+                        <input type="text" id="tstFormName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="tstFormLoc">City / Neighborhood *</label>
+                        <input type="text" id="tstFormLoc" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="tstFormRating">Rating Stars (1 - 5) *</label>
+                    <select id="tstFormRating" class="form-control">
+                        <option value="5" selected>5 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="3">3 Stars</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="tstFormComment">Feedback Review Comment *</label>
+                    <textarea id="tstFormComment" class="form-control" style="height: 90px;" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-secondary btn-block btn-lg">Save Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 5: ADD/EDIT FAQS -->
+    <div class="modal-overlay" id="faqModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('faqModal')">&times;</button>
+            <h2 id="faqModalTitle" class="modal-title">Create FAQ Accordion</h2>
+            
+            <form id="faqForm" onsubmit="saveFaqData(event)">
+                <input type="hidden" id="editFaqId" value="">
+                <div class="form-group">
+                    <label class="form-label" for="faqFormQuestion">Question *</label>
+                    <input type="text" id="faqFormQuestion" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="faqFormAnswer">Answer Details *</label>
+                    <textarea id="faqFormAnswer" class="form-control" style="height: 100px;" required></textarea>
+                </div>
+                <div class="admin-grid-form">
+                    <div class="form-group">
+                        <label class="form-label" for="faqFormCat">Category</label>
+                        <select id="faqFormCat" class="form-control">
+                            <option value="Plans">Plans</option>
+                            <option value="Installation">Installation</option>
+                            <option value="IPTV">IPTV</option>
+                            <option value="Technical Support">Technical Support</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="faqFormOrder">Display Order</label>
+                        <input type="number" id="faqFormOrder" class="form-control" value="1" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-secondary btn-block btn-lg">Save Accordion FAQ</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase SDK Compat -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Admin Logic script module -->
+    <script type="module" src="js/admin-dashboard.js"></script>
+</body>
+</html>
