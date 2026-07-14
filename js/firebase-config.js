@@ -12,9 +12,20 @@ export let db = null;
 export let storage = null;
 export let isFirebaseReady = false;
 
+// Default fallback configuration provided by the user
+const DEFAULT_FIREBASE_CONFIG = {
+  apiKey: "AIzaSyCXa_04vXbgmjUBT1CLEQiqhFAU81qB8fU",
+  authDomain: "dvr-website-cfcb9.firebaseapp.com",
+  projectId: "dvr-website-cfcb9",
+  storageBucket: "dvr-website-cfcb9.firebasestorage.app",
+  messagingSenderId: "1092531190561",
+  appId: "1:1092531190561:web:581381b563aa12e9065c60",
+  measurementId: "G-FCCRNRSN85"
+};
+
 // Check if credentials exist and try to initialize Firebase
 export function initializeFirebase(customConfig = null) {
-    const config = customConfig || getStoredConfig();
+    const config = customConfig || getStoredConfig() || DEFAULT_FIREBASE_CONFIG;
 
     if (!config || !config.apiKey || !config.projectId) {
         console.warn("Firebase config not found or incomplete. Falling back to local seed data database.");
