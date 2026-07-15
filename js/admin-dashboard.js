@@ -226,6 +226,61 @@ function switchAdminTab(tabName, linkEl = null) {
     }
 }
 
+// Helper to seed Firestore default data from seed-data.js
+async function seedFirestoreDefaultData() {
+    console.log("🌱 Database is empty. Seeding default data to Cloud Firestore...");
+    try {
+        if (DVR_SEED_DATA.plans) {
+            for (const plan of DVR_SEED_DATA.plans) {
+                const { id, ...data } = plan;
+                await db.collection("plans").add(data);
+            }
+        }
+        if (DVR_SEED_DATA.coverage) {
+            for (const area of DVR_SEED_DATA.coverage) {
+                const { id, ...data } = area;
+                await db.collection("coverage").add(data);
+            }
+        }
+        if (DVR_SEED_DATA.testimonials) {
+            for (const tst of DVR_SEED_DATA.testimonials) {
+                const { id, ...data } = tst;
+                await db.collection("testimonials").add(data);
+            }
+        }
+        if (DVR_SEED_DATA.faq) {
+            for (const faq of DVR_SEED_DATA.faq) {
+                const { id, ...data } = faq;
+                await db.collection("faq").add(data);
+            }
+        }
+        if (DVR_SEED_DATA.heroBanners) {
+            for (const banner of DVR_SEED_DATA.heroBanners) {
+                const { id, ...data } = banner;
+                await db.collection("hero_banners").add(data);
+            }
+        }
+        if (DVR_SEED_DATA.services) {
+            for (const srv of DVR_SEED_DATA.services) {
+                const { id, ...data } = srv;
+                await db.collection("services").add(data);
+            }
+        }
+        if (DVR_SEED_DATA.settings) {
+            await db.collection("settings").doc("site_settings").set(DVR_SEED_DATA.settings);
+        }
+        if (DVR_SEED_DATA.offers) {
+            for (const offer of DVR_SEED_DATA.offers) {
+                const { id, ...data } = offer;
+                await db.collection("offers").add(data);
+            }
+        }
+        console.log("🌱 Database seeding completed successfully!");
+    } catch (error) {
+        console.error("Error during database seeding:", error);
+    }
+}
+
 // ------------------------------------------------------------
 // CMS Syncing & CRUD Builders
 // ------------------------------------------------------------
@@ -248,7 +303,12 @@ async function syncCMSData() {
     } else {
         // Live pulls
         try {
-            const plansSnap = await db.collection("plans").orderBy("displayOrder", "asc").get();
+            let plansSnap = await db.collection("plans").orderBy("displayOrder", "asc").get();
+            if (plansSnap.empty) {
+                // Database is blank, seed default data!
+                await seedFirestoreDefaultData();
+                plansSnap = await db.collection("plans").orderBy("displayOrder", "asc").get();
+            }
             dbPlans = plansSnap.docs.map(d => ({ id: d.id, ...d.data() }));
 
             const enquiriesSnap = await db.collection("enquiries").orderBy("date", "desc").get();
