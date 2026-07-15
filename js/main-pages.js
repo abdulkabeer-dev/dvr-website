@@ -40,22 +40,28 @@ async function initPages() {
 async function fetchLiveCollections() {
     if (isFirebaseReady && db) {
         try {
-            // Fetch Plans
-            const plansSnap = await db.collection("plans").where("active", "==", true).orderBy("displayOrder", "asc").get();
+            // Fetch Plans (client-side filter to avoid composite index requirement)
+            const plansSnap = await db.collection("plans").orderBy("displayOrder", "asc").get();
             if (!plansSnap.empty) {
-                plansList = plansSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                plansList = plansSnap.docs
+                    .map(doc => ({ id: doc.id, ...doc.data() }))
+                    .filter(p => p.active === true);
             }
             
-            // Fetch FAQ
-            const faqSnap = await db.collection("faq").where("visible", "==", true).orderBy("order", "asc").get();
+            // Fetch FAQ (client-side filter to avoid composite index requirement)
+            const faqSnap = await db.collection("faq").orderBy("order", "asc").get();
             if (!faqSnap.empty) {
-                faqList = faqSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                faqList = faqSnap.docs
+                    .map(doc => ({ id: doc.id, ...doc.data() }))
+                    .filter(f => f.visible === true);
             }
 
-            // Fetch Testimonials
-            const testSnap = await db.collection("testimonials").where("visible", "==", true).get();
+            // Fetch Testimonials (client-side filter)
+            const testSnap = await db.collection("testimonials").get();
             if (!testSnap.empty) {
-                testimonialsList = testSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                testimonialsList = testSnap.docs
+                    .map(doc => ({ id: doc.id, ...doc.data() }))
+                    .filter(t => t.visible === true);
             }
 
             // Fetch Coverage Areas
@@ -64,16 +70,20 @@ async function fetchLiveCollections() {
                 coverageList = covSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
             }
 
-            // Fetch Services
-            const srvSnap = await db.collection("services").where("visible", "==", true).orderBy("order", "asc").get();
+            // Fetch Services (client-side filter to avoid composite index requirement)
+            const srvSnap = await db.collection("services").orderBy("order", "asc").get();
             if (!srvSnap.empty) {
-                servicesList = srvSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                servicesList = srvSnap.docs
+                    .map(doc => ({ id: doc.id, ...doc.data() }))
+                    .filter(s => s.visible === true);
             }
 
-            // Fetch Hero Banners
-            const heroSnap = await db.collection("hero_banners").where("visible", "==", true).orderBy("order", "asc").get();
+            // Fetch Hero Banners (no compound query to avoid needing a composite index)
+            const heroSnap = await db.collection("hero_banners").orderBy("order", "asc").get();
             if (!heroSnap.empty) {
-                heroBanners = heroSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                heroBanners = heroSnap.docs
+                    .map(doc => ({ id: doc.id, ...doc.data() }))
+                    .filter(b => b.visible === true);
             }
         } catch (e) {
             console.warn("Firestore database live sync failed. Running on local seed configuration.", e);
