@@ -45,7 +45,9 @@ export function initializeFirebase(customConfig = null) {
             }
             auth = window.firebase.auth();
             db = window.firebase.firestore();
-            storage = window.firebase.storage();
+            if (typeof window.firebase.storage === "function") {
+                storage = window.firebase.storage();
+            }
             isFirebaseReady = true;
             console.log("🔥 Firebase successfully initialized from stored configurations.");
             return true;
