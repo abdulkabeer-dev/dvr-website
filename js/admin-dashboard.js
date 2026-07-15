@@ -3,7 +3,7 @@
    ============================================================ */
 
 import { DVR_SEED_DATA } from './seed-data.js';
-import { initializeFirebase, saveFirebaseConfig, clearFirebaseConfig, getStoredConfig, auth, db, isFirebaseReady } from './firebase-config.js';
+import { initializeFirebase, auth, db, isFirebaseReady } from './firebase-config.js';
 
 // Local storage session key for admin auth
 const AUTH_SESSION_KEY = "dvr_admin_session";
@@ -36,9 +36,7 @@ async function initAdmin() {
     window.handleLogin = handleLogin;
     window.handleLogout = handleLogout;
     window.switchAdminTab = switchAdminTab;
-    window.saveFirebaseCredentials = saveFirebaseCredentials;
-    window.resetFirebaseCredentials = resetFirebaseCredentials;
-    window.openConfigModal = () => switchAdminTab('firebase-conn');
+    // Firebase credentials are now fully integrated in the source code
     
     // CRM Enquiries Action bindings
     window.filterLeads = filterLeads;
@@ -225,9 +223,6 @@ function switchAdminTab(tabName, linkEl = null) {
     }
     if (tabName === 'settings') {
         prefillSettingsForm();
-    }
-    if (tabName === 'firebase-conn') {
-        prefillFirebaseConfigForm();
     }
 }
 
@@ -1181,42 +1176,7 @@ async function saveSiteSettings(event) {
     }
 }
 
-// ------------------------------------------------------------
-// Firebase Connect logic Panel
-// ------------------------------------------------------------
-function prefillFirebaseConfigForm() {
-    const config = getStoredConfig() || {};
-    document.getElementById("fbApiKey").value = config.apiKey || "";
-    document.getElementById("fbProjId").value = config.projectId || "";
-    document.getElementById("fbAuthDomain").value = config.authDomain || "";
-    document.getElementById("fbStorageBucket").value = config.storageBucket || "";
-    document.getElementById("fbAppId").value = config.appId || "";
-}
 
-function saveFirebaseCredentials(event) {
-    event.preventDefault();
-    const apiKey = document.getElementById("fbApiKey").value.trim();
-    const projectId = document.getElementById("fbProjId").value.trim();
-    const authDomain = document.getElementById("fbAuthDomain").value.trim() || `${projectId}.firebaseapp.com`;
-    const storageBucket = document.getElementById("fbStorageBucket").value.trim() || `${projectId}.appspot.com`;
-    const appId = document.getElementById("fbAppId").value.trim() || "";
-
-    const config = { apiKey, projectId, authDomain, storageBucket, appId };
-
-    if (saveFirebaseConfig(config)) {
-        alert("Firebase credentials saved successfully! The admin panel will now reload to establish sync connections.");
-        window.location.reload();
-    } else {
-        alert("Error saving credentials to local settings.");
-    }
-}
-
-function resetFirebaseCredentials() {
-    if (confirm("Are you sure you want to clear your Firebase credentials? This will reconnect the local fallback database.")) {
-        clearFirebaseConfig();
-        window.location.reload();
-    }
-}
 
 // Close modal helper
 function closeModal(modalId) {

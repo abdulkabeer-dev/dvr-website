@@ -2,9 +2,6 @@
    SREE DVR BROADBAND - FIREBASE CONFIGURATION CONNECTOR
    ============================================================ */
 
-// Key used to store Firebase credentials in localStorage
-const LOCAL_STORAGE_KEY = "dvr_firebase_config";
-
 // Global instances
 export let firebaseApp = null;
 export let auth = null;
@@ -12,8 +9,8 @@ export let db = null;
 export let storage = null;
 export let isFirebaseReady = false;
 
-// Default fallback configuration provided by the user
-const DEFAULT_FIREBASE_CONFIG = {
+// Integrated Firebase configuration
+const FIREBASE_CONFIG = {
   apiKey: "AIzaSyCXa_04vXbgmjUBT1CLEQiqhFAU81qB8fU",
   authDomain: "dvr-website-cfcb9.firebaseapp.com",
   projectId: "dvr-website-cfcb9",
@@ -23,23 +20,12 @@ const DEFAULT_FIREBASE_CONFIG = {
   measurementId: "G-FCCRNRSN85"
 };
 
-// Check if credentials exist and try to initialize Firebase
-export function initializeFirebase(customConfig = null) {
-    const config = customConfig || getStoredConfig() || DEFAULT_FIREBASE_CONFIG;
-
-    if (!config || !config.apiKey || !config.projectId) {
-        console.warn("Firebase config not found or incomplete. Falling back to local seed data database.");
-        isFirebaseReady = false;
-        return false;
-    }
-
+// Initialize Firebase
+export function initializeFirebase() {
     try {
-        // Load Firebase SDK modularly from CDN inside the app (if not loaded via index scripts)
-        // For standard Vanilla JS loading, we assume standard firebase scripts are included in index/admin.html
         if (window.firebase) {
-            // Compat initialization for simpler CDN script inclusion
             if (window.firebase.apps.length === 0) {
-                firebaseApp = window.firebase.initializeApp(config);
+                firebaseApp = window.firebase.initializeApp(FIREBASE_CONFIG);
             } else {
                 firebaseApp = window.firebase.app();
             }
@@ -49,7 +35,7 @@ export function initializeFirebase(customConfig = null) {
                 storage = window.firebase.storage();
             }
             isFirebaseReady = true;
-            console.log("🔥 Firebase successfully initialized from stored configurations.");
+            console.log("🔥 Firebase successfully initialized from integrated configurations.");
             return true;
         } else {
             console.error("Firebase SDK script not loaded on the window object.");
@@ -63,43 +49,7 @@ export function initializeFirebase(customConfig = null) {
     }
 }
 
-// Retrieve config from localStorage
-export function getStoredConfig() {
-    try {
-        const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
-        return stored ? JSON.parse(stored) : null;
-    } catch (e) {
-        console.error("Error reading stored Firebase config", e);
-        return null;
-    }
-}
-
-// Save config to localStorage
-export function saveFirebaseConfig(config) {
-    if (!config || typeof config !== "object") return false;
-    try {
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(config));
-        console.log("Firebase config saved successfully.");
-        return true;
-    } catch (e) {
-        console.error("Error saving Firebase config", e);
-        return false;
-    }
-}
-
-// Clear config from localStorage
-export function clearFirebaseConfig() {
-    try {
-        localStorage.removeItem(LOCAL_STORAGE_KEY);
-        console.log("Firebase config cleared.");
-        return true;
-    } catch (e) {
-        console.error("Error clearing Firebase config", e);
-        return false;
-    }
-}
-
-// Initialize on file load if scripts are ready
+// Auto-initialize on load if scripts are ready
 if (window.firebase) {
     initializeFirebase();
 }

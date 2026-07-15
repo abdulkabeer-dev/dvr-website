@@ -15,11 +15,7 @@
 </head>
 <body>
 
-    <!-- 1. Firebase Config Alert Banner -->
-    <div id="configAlertBanner" class="config-alert-banner" style="display: none;">
-        <span><span class="material-icons" style="vertical-align: text-bottom; font-size: 18px;">warning</span> <strong>Firebase Connection Offline:</strong> The portal is currently running in local storage fallback mode (Demo mode). Enter your configuration keys to activate live Firestore syncing.</span>
-        <button onclick="openConfigModal()" class="btn btn-secondary btn-sm">Connect Firebase</button>
-    </div>
+
 
     <!-- 2. Secure Login Card Portal (Displays when not authenticated) -->
     <div id="loginPortal" class="login-container">
@@ -67,7 +63,6 @@
                 <div class="sidebar-link" onclick="switchAdminTab('testimonials', this)"><span class="material-icons">rate_review</span> Testimonials</div>
                 <div class="sidebar-link" onclick="switchAdminTab('faqs', this)"><span class="material-icons">question_answer</span> FAQs CMS</div>
                 <div class="sidebar-link" onclick="switchAdminTab('settings', this)"><span class="material-icons">settings</span> Settings</div>
-                <div class="sidebar-link" onclick="switchAdminTab('firebase-conn', this)"><span class="material-icons">cloud</span> Firebase Connect</div>
             </nav>
             
             <div class="sidebar-link" onclick="handleLogout()" style="color: #FCA5A5; margin-top: auto; border-top: 1px solid rgba(255,255,255,0.05); padding-top: var(--space-md);">
@@ -417,41 +412,7 @@
                     </div>
                 </div>
 
-                <!-- PANEL 10: FIREBASE CONNECT -->
-                <div id="tab-firebase-conn" class="admin-tab-content" style="display: none;">
-                    <div class="panel-card" style="max-width: 600px;">
-                        <h3>Configure Firebase Integration Keys</h3>
-                        <p style="color:var(--gray-500); margin-bottom:var(--space-lg);">Provide your Firebase Web SDK config parameters below to enable live cloud Firestore integrations and authentication.</p>
-                        
-                        <form id="firebaseConfigForm" onsubmit="saveFirebaseCredentials(event)">
-                            <div class="form-group">
-                                <label class="form-label" for="fbApiKey">API Key (apiKey) *</label>
-                                <input type="text" id="fbApiKey" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="fbProjId">Project ID (projectId) *</label>
-                                <input type="text" id="fbProjId" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="fbAuthDomain">Auth Domain (authDomain)</label>
-                                <input type="text" id="fbAuthDomain" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="fbStorageBucket">Storage Bucket (storageBucket)</label>
-                                <input type="text" id="fbStorageBucket" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="fbAppId">App ID (appId)</label>
-                                <input type="text" id="fbAppId" class="form-control">
-                            </div>
-                            
-                            <div style="display: flex; gap: var(--space-md); margin-top: var(--space-lg);">
-                                <button type="submit" class="btn btn-secondary flex-grow">Connect & Sync</button>
-                                <button type="button" onclick="resetFirebaseCredentials()" class="btn btn-outline">Clear Connection Keys</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+
 
             </div>
         </main>
