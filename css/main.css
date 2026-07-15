@@ -17,6 +17,7 @@ html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
 }
 
 body {
@@ -430,6 +431,7 @@ section { position: relative; }
     letter-spacing: 1.5px;
     text-transform: uppercase;
     margin-bottom: var(--space-md);
+    white-space: nowrap;
 }
 
 .section-title {

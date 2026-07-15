@@ -639,4 +639,11 @@
     }
 }
 
+@media (max-width: 768px) {
+    #availability {
+        margin-top: var(--space-md) !important;
+    }
+}
+
+
 
