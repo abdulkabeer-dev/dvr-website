@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Disallow admin panel from indexing
+Disallow: /admin.html
+Disallow: /admin
+Disallow: /.git/
+Disallow: /js/firebase-config.js
+
+# Crawl-delay to be a good citizen
+Crawl-delay: 10
+
+# Sitemap location
+Sitemap: https://abdulkabeer-dev.github.io/dvr-website/sitemap.xml
