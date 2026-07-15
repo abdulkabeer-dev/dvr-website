@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SREE DVR Broadband | Best High-Speed Fiber Internet in Kurnool</title>
-    <meta name="description" content="Kurnool's fastest fiber internet. Plans from Rs.299/mo. Get connected in 30 minutes.">
+    <meta name="description"
+        content="Kurnool's fastest fiber internet. Plans from Rs.299/mo. Get connected in 30 minutes.">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/main.css">
@@ -13,50 +15,342 @@
     <link rel="stylesheet" href="css/pages.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
-        .hero-section{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;background:var(--gradient-hero);}
-        .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 10% 60%,rgba(10,77,140,.5) 0%,transparent 55%),radial-gradient(ellipse at 85% 15%,rgba(247,148,29,.15) 0%,transparent 45%);z-index:0;}
-        .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;z-index:0;}
-        .hero-layout{display:grid;grid-template-columns:1fr 360px;gap:var(--space-3xl);align-items:center;padding:var(--space-4xl) 0;}
-        .hero-content{position:relative;z-index:10;}
-        .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(247,148,29,.15);border:1px solid rgba(247,148,29,.3);color:var(--secondary-light);padding:6px 18px;border-radius:var(--radius-full);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:var(--space-lg);}
-        .hero-title{font-size:clamp(2.4rem,5.5vw,4rem);font-weight:900;color:#fff;line-height:1.08;margin-bottom:var(--space-lg);}
-        .hero-title .gt{background:linear-gradient(135deg,var(--secondary-light) 0%,#FFD700 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-        .hero-subtitle{font-size:1.1rem;color:rgba(255,255,255,.78);line-height:1.7;margin-bottom:var(--space-2xl);}
-        .hero-actions{display:flex;gap:var(--space-md);flex-wrap:wrap;margin-bottom:var(--space-2xl);}
-        .hero-trust{display:flex;gap:var(--space-sm);flex-wrap:wrap;}
-        .hero-visual{position:relative;z-index:10;display:flex;flex-direction:column;gap:var(--space-md);}
-        .speed-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-2xl);padding:var(--space-xl);backdrop-filter:var(--glass-blur-sm);text-align:center;}
-        .speed-number{font-size:4.5rem;font-weight:900;font-family:var(--font-heading);color:#fff;line-height:1;}
-        .speed-label{font-size:.9rem;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:2px;margin-top:4px;}
-        .speed-accent{font-size:1rem;font-weight:700;color:var(--secondary-light);}
-        .mini-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-sm);}
-        .mini-stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-xl);padding:var(--space-md);text-align:center;}
-        .mini-stat-num{font-size:1.7rem;font-weight:900;font-family:var(--font-heading);color:var(--secondary-light);}
-        .mini-stat-lbl{font-size:.72rem;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1px;}
-        .scroll-indicator{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.4);font-size:.75rem;animation:float 2s ease-in-out infinite;z-index:10;}
-        .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-xl);}
-        .blog-card{background:#fff;border-radius:var(--radius-2xl);overflow:hidden;box-shadow:var(--shadow-md);border:1px solid var(--gray-100);display:flex;flex-direction:column;transition:all var(--transition-normal);}
-        .blog-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-xl);}
-        .blog-img{height:200px;overflow:hidden;}
-        .blog-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;}
-        .blog-card:hover .blog-img img{transform:scale(1.06);}
-        .blog-body{padding:var(--space-xl);flex-grow:1;display:flex;flex-direction:column;}
-        .blog-cat{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--secondary-dark);background:rgba(247,148,29,.1);display:inline-block;padding:3px 10px;border-radius:var(--radius-full);margin-bottom:var(--space-sm);}
-        .blog-title{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:var(--space-sm);line-height:1.35;}
-        .blog-excerpt{color:var(--gray-500);font-size:.875rem;line-height:1.6;flex-grow:1;margin-bottom:var(--space-md);}
-        .blog-link{font-weight:700;color:var(--primary);font-size:.88rem;display:inline-flex;align-items:center;gap:4px;transition:var(--transition-fast);}
-        .blog-link:hover{color:var(--secondary);gap:8px;}
-        .newsletter-section{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--navy) 100%);padding:var(--space-3xl) 0;}
-        .newsletter-inner{max-width:580px;margin:0 auto;text-align:center;}
-        .newsletter-icon{width:60px;height:60px;background:rgba(247,148,29,.15);border:1px solid rgba(247,148,29,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto var(--space-lg);}
-        .newsletter-form{display:flex;gap:var(--space-sm);max-width:460px;margin:0 auto;}
-        .newsletter-input{flex-grow:1;padding:.9rem 1.4rem;border-radius:var(--radius-full);border:2px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font-family:var(--font-body);font-size:.95rem;outline:none;}
-        .newsletter-input::placeholder{color:rgba(255,255,255,.5);}
-        .newsletter-input:focus{border-color:var(--secondary);}
-        @media(max-width:1100px){.hero-layout{grid-template-columns:1fr;}}
-        @media(max-width:768px){.hero-section{min-height:auto;}.hero-trust{display:none;}.stats-grid{grid-template-columns:repeat(2,1fr);}.newsletter-form{flex-direction:column;}}
+        .hero-section {
+            position: relative;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: var(--gradient-hero);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 10% 60%, rgba(10, 77, 140, .5) 0%, transparent 55%), radial-gradient(ellipse at 85% 15%, rgba(247, 148, 29, .15) 0%, transparent 45%);
+            z-index: 0;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: var(--space-3xl);
+            align-items: center;
+            padding: var(--space-4xl) 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(247, 148, 29, .15);
+            border: 1px solid rgba(247, 148, 29, .3);
+            color: var(--secondary-light);
+            padding: 6px 18px;
+            border-radius: var(--radius-full);
+            font-size: .8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: var(--space-lg);
+        }
+
+        .hero-title {
+            font-size: clamp(2.4rem, 5.5vw, 4rem);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.08;
+            margin-bottom: var(--space-lg);
+        }
+
+        .hero-title .gt {
+            background: linear-gradient(135deg, var(--secondary-light) 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, .78);
+            line-height: 1.7;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .hero-trust {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .speed-card {
+            background: rgba(255, 255, 255, .07);
+            border: 1px solid rgba(255, 255, 255, .15);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-xl);
+            backdrop-filter: var(--glass-blur-sm);
+            text-align: center;
+        }
+
+        .speed-number {
+            font-size: 4.5rem;
+            font-weight: 900;
+            font-family: var(--font-heading);
+            color: #fff;
+            line-height: 1;
+        }
+
+        .speed-label {
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .6);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 4px;
+        }
+
+        .speed-accent {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--secondary-light);
+        }
+
+        .mini-stat-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-sm);
+        }
+
+        .mini-stat {
+            background: rgba(255, 255, 255, .07);
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: var(--radius-xl);
+            padding: var(--space-md);
+            text-align: center;
+        }
+
+        .mini-stat-num {
+            font-size: 1.7rem;
+            font-weight: 900;
+            font-family: var(--font-heading);
+            color: var(--secondary-light);
+        }
+
+        .mini-stat-lbl {
+            font-size: .72rem;
+            color: rgba(255, 255, 255, .6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, .4);
+            font-size: .75rem;
+            animation: float 2s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-xl);
+        }
+
+        .blog-card {
+            background: #fff;
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-100);
+            display: flex;
+            flex-direction: column;
+            transition: all var(--transition-normal);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .blog-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .blog-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .6s ease;
+        }
+
+        .blog-card:hover .blog-img img {
+            transform: scale(1.06);
+        }
+
+        .blog-body {
+            padding: var(--space-xl);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-cat {
+            font-size: .72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--secondary-dark);
+            background: rgba(247, 148, 29, .1);
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-sm);
+        }
+
+        .blog-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: var(--space-sm);
+            line-height: 1.35;
+        }
+
+        .blog-excerpt {
+            color: var(--gray-500);
+            font-size: .875rem;
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-bottom: var(--space-md);
+        }
+
+        .blog-link {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: .88rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: var(--transition-fast);
+        }
+
+        .blog-link:hover {
+            color: var(--secondary);
+            gap: 8px;
+        }
+
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--navy) 100%);
+            padding: var(--space-3xl) 0;
+        }
+
+        .newsletter-inner {
+            max-width: 580px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(247, 148, 29, .15);
+            border: 1px solid rgba(247, 148, 29, .3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto var(--space-lg);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: var(--space-sm);
+            max-width: 460px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex-grow: 1;
+            padding: .9rem 1.4rem;
+            border-radius: var(--radius-full);
+            border: 2px solid rgba(255, 255, 255, .2);
+            background: rgba(255, 255, 255, .1);
+            color: #fff;
+            font-family: var(--font-body);
+            font-size: .95rem;
+            outline: none;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, .5);
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--secondary);
+        }
+
+        @media(max-width:1100px) {
+            .hero-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width:768px) {
+            .hero-section {
+                min-height: auto;
+            }
+
+            .hero-trust {
+                display: none;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <!-- Promo Ribbon -->
@@ -106,7 +400,8 @@
             <a href="coverage.html" class="drawer-link ">Coverage</a>
             <a href="contact.html" class="drawer-link ">Contact</a>
             <a href="https://myaccount.dvrbroadband.net/" class="drawer-link" target="_blank">My Account</a>
-            <button onclick="openEnquiryModal('Mobile Drawer')" class="btn btn-secondary btn-block" style="margin-top: var(--space-lg);">Get Connected</button>
+            <button onclick="openEnquiryModal('Mobile Drawer')" class="btn btn-secondary btn-block"
+                style="margin-top: var(--space-lg);">Get Connected</button>
         </nav>
     </div>
 
@@ -114,7 +409,8 @@
     <!-- Sticky CTA Bar -->
     <div id="stickyCtaBar" class="sticky-cta-bar">
         <div class="container sticky-cta-content">
-            <span class="sticky-cta-title">&#9889; Lightning Fiber Internet &mdash; Starting at &#8377;299/mo in Kurnool</span>
+            <span class="sticky-cta-title">&#9889; Lightning Fiber Internet &mdash; Starting at &#8377;299/mo in
+                Kurnool</span>
             <div style="display:flex;gap:var(--space-md);">
                 <a href="plans.html" class="btn btn-outline btn-sm">View Plans</a>
                 <button onclick="openEnquiryModal('Sticky CTA')" class="btn btn-secondary btn-sm">Book Now</button>
@@ -127,7 +423,7 @@
     <section class="hero-section-wrapper">
         <div class="hero-bg"></div>
         <div class="hero-grid"></div>
-        
+
         <!-- Viewport Container -->
         <div class="hero-slider-container">
             <!-- Sliding Track (wiped/injected by JS) -->
@@ -138,16 +434,18 @@
                         <div class="slide-content">
                             <span class="slide-badge">Kurnool's #1 Fiber Provider</span>
                             <h1 class="slide-title">Superfast Fiber Internet</h1>
-                            <p class="slide-subtitle">Symmetrical speeds up to 300 Mbps. No data caps. Bundled IPTV with 350+ live channels. Get connected in under 30 minutes.</p>
+                            <p class="slide-subtitle">Symmetrical speeds up to 300 Mbps. No data caps. Bundled IPTV with
+                                350+ live channels. Get connected in under 30 minutes.</p>
                             <div class="slide-actions">
                                 <a href="plans.html" class="btn btn-secondary btn-lg">Explore Plans</a>
-                                <button onclick="openEnquiryModal('Hero Fallback')" class="btn btn-white btn-lg">Get Connected</button>
+                                <button onclick="openEnquiryModal('Hero Fallback')" class="btn btn-white btn-lg">Get
+                                    Connected</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Navigation Controls -->
             <button class="slider-arrow slider-arrow-prev" onclick="moveSlider(-1)" aria-label="Previous Slide">
                 <span class="material-icons">chevron_left</span>
@@ -201,11 +499,13 @@
                     <span class="material-icons" style="font-size:14px;">place</span> Coverage Check
                 </div>
                 <h2 style="color:#fff;margin-bottom:var(--space-sm);">Is Fiber Available in Your Area?</h2>
-                <p style="color:rgba(255,255,255,.75);">Enter your area/village to instantly check fiber availability.</p>
+                <p style="color:rgba(255,255,255,.75);">Enter your area/village to instantly check fiber availability.
+                </p>
             </div>
             <div class="checker-form">
                 <div class="checker-input-wrapper">
-                    <input type="text" id="areaInput" class="checker-input" placeholder="Enter Area / Village / Mandal (e.g. Budhawara Peta)">
+                    <input type="text" id="areaInput" class="checker-input"
+                        placeholder="Enter Area / Village / Mandal (e.g. Budhawara Peta)">
                 </div>
                 <button onclick="checkFeasibility()" class="btn btn-secondary btn-lg">
                     <span class="material-icons" style="font-size:18px;">search</span> Check Coverage
@@ -219,9 +519,11 @@
     <section style="padding:var(--space-4xl) 0;background:#fff;">
         <div class="container">
             <div class="section-header animate-on-scroll fade-up">
-                <span class="section-tag"><span class="material-icons" style="font-size:14px;">emoji_events</span> Why DVR Broadband</span>
+                <span class="section-tag"><span class="material-icons" style="font-size:14px;">emoji_events</span> Why
+                    DVR Broadband</span>
                 <h2 class="section-title">The <strong>Fastest &amp; Most Reliable</strong> ISP in Kurnool</h2>
-                <p class="section-desc">Purpose-built fiber infrastructure for gaming, streaming, and enterprise &mdash; without compromise.</p>
+                <p class="section-desc">Purpose-built fiber infrastructure for gaming, streaming, and enterprise &mdash;
+                    without compromise.</p>
                 <div class="divider-line"></div>
             </div>
             <div class="why-grid" id="whyGrid"></div>
@@ -232,14 +534,16 @@
     <section id="plans" style="padding:var(--space-4xl) 0;background:var(--gradient-section-alt);">
         <div class="container">
             <div class="section-header animate-on-scroll fade-up">
-                <span class="section-tag"><span class="material-icons" style="font-size:14px;">local_offer</span> Best Value Deals</span>
+                <span class="section-tag"><span class="material-icons" style="font-size:14px;">local_offer</span> Best
+                    Value Deals</span>
                 <h2 class="section-title">Popular <strong>Fiber Combo Plans</strong></h2>
                 <p class="section-desc">Symmetrical speeds + premium digital entertainment bundled together.</p>
                 <div class="divider-line"></div>
             </div>
             <div class="plans-grid" id="plansGrid"></div>
             <div style="text-align:center;margin-top:var(--space-2xl);" class="animate-on-scroll fade-up">
-                <a href="plans.html" class="btn btn-primary btn-lg">Compare All Plans <span class="material-icons" style="font-size:18px;">arrow_forward</span></a>
+                <a href="plans.html" class="btn btn-primary btn-lg">Compare All Plans <span class="material-icons"
+                        style="font-size:18px;">arrow_forward</span></a>
             </div>
         </div>
     </section>
@@ -248,7 +552,8 @@
     <section style="padding:var(--space-4xl) 0;background:#fff;">
         <div class="container">
             <div class="section-header animate-on-scroll fade-up">
-                <span class="section-tag"><span class="material-icons" style="font-size:14px;">timeline</span> Getting Connected</span>
+                <span class="section-tag"><span class="material-icons" style="font-size:14px;">timeline</span> Getting
+                    Connected</span>
                 <h2 class="section-title">Connected in <strong>4 Simple Steps</strong></h2>
                 <p class="section-desc">From sign-up to surfing &mdash; our installation gets you online fast.</p>
                 <div class="divider-line"></div>
@@ -256,19 +561,31 @@
             <div class="timeline">
                 <div class="timeline-item animate-on-scroll slide-left stagger-1">
                     <div class="timeline-dot">1</div>
-                    <div class="timeline-content"><h3>Book Connection</h3><p>Fill our quick form or call <strong>91333 10422</strong>. Takes under 2 minutes.</p></div>
+                    <div class="timeline-content">
+                        <h3>Book Connection</h3>
+                        <p>Fill our quick form or call <strong>91333 10422</strong>. Takes under 2 minutes.</p>
+                    </div>
                 </div>
                 <div class="timeline-item animate-on-scroll slide-left stagger-2">
                     <div class="timeline-dot">2</div>
-                    <div class="timeline-content"><h3>Feasibility Verification</h3><p>Our network engineers verify fiber availability at your exact location.</p></div>
+                    <div class="timeline-content">
+                        <h3>Feasibility Verification</h3>
+                        <p>Our network engineers verify fiber availability at your exact location.</p>
+                    </div>
                 </div>
                 <div class="timeline-item animate-on-scroll slide-left stagger-3">
                     <div class="timeline-dot">3</div>
-                    <div class="timeline-content"><h3>Fiber Installation</h3><p>Field technicians pull fiber and install a premium dual-band Wi-Fi router.</p></div>
+                    <div class="timeline-content">
+                        <h3>Fiber Installation</h3>
+                        <p>Field technicians pull fiber and install a premium dual-band Wi-Fi router.</p>
+                    </div>
                 </div>
                 <div class="timeline-item animate-on-scroll slide-left stagger-4">
                     <div class="timeline-dot">4</div>
-                    <div class="timeline-content"><h3>Activate &amp; Go Live!</h3><p>We configure your system, test speeds, set up IPTV, and you're live!</p></div>
+                    <div class="timeline-content">
+                        <h3>Activate &amp; Go Live!</h3>
+                        <p>We configure your system, test speeds, set up IPTV, and you're live!</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -278,7 +595,8 @@
     <section style="padding:var(--space-4xl) 0;background:var(--gradient-section-alt);">
         <div class="container">
             <div class="section-header animate-on-scroll fade-up">
-                <span class="section-tag"><span class="material-icons" style="font-size:14px;">star</span> Customer Reviews</span>
+                <span class="section-tag"><span class="material-icons" style="font-size:14px;">star</span> Customer
+                    Reviews</span>
                 <h2 class="section-title">What Our <strong>Customers Say</strong></h2>
                 <p class="section-desc">Real testimonials from homes and businesses across Kurnool.</p>
                 <div class="divider-line"></div>
@@ -291,37 +609,50 @@
     <section style="padding:var(--space-4xl) 0;background:#fff;">
         <div class="container">
             <div class="section-header animate-on-scroll fade-up">
-                <span class="section-tag"><span class="material-icons" style="font-size:14px;">article</span> News &amp; Technology</span>
+                <span class="section-tag"><span class="material-icons" style="font-size:14px;">article</span> News &amp;
+                    Technology</span>
                 <h2 class="section-title">Latest <strong>Tips &amp; Insights</strong></h2>
                 <p class="section-desc">Stay updated with fiber tech, smart home guides, and IPTV features.</p>
                 <div class="divider-line"></div>
             </div>
             <div class="blog-grid">
                 <div class="blog-card animate-on-scroll fade-up stagger-1">
-                    <div class="blog-img"><img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=600" alt="Fiber Speed Guide"></div>
+                    <div class="blog-img"><img
+                            src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=600"
+                            alt="Fiber Speed Guide"></div>
                     <div class="blog-body">
                         <span class="blog-cat">Guides &amp; Tips</span>
                         <h3 class="blog-title">How to Maximize Your Fiber Wi-Fi Coverage at Home</h3>
-                        <p class="blog-excerpt">Simple router placement and band-steering to get the best wireless coverage in every corner of your home.</p>
-                        <a href="about.html" class="blog-link">Read Article <span class="material-icons" style="font-size:16px;">arrow_forward</span></a>
+                        <p class="blog-excerpt">Simple router placement and band-steering to get the best wireless
+                            coverage in every corner of your home.</p>
+                        <a href="about.html" class="blog-link">Read Article <span class="material-icons"
+                                style="font-size:16px;">arrow_forward</span></a>
                     </div>
                 </div>
                 <div class="blog-card animate-on-scroll fade-up stagger-2">
-                    <div class="blog-img"><img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&q=80&w=600" alt="Symmetric Speeds"></div>
+                    <div class="blog-img"><img
+                            src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&q=80&w=600"
+                            alt="Symmetric Speeds"></div>
                     <div class="blog-body">
                         <span class="blog-cat">Technology</span>
                         <h3 class="blog-title">Why Symmetric Upload Speeds Matter for Work-From-Home</h3>
-                        <p class="blog-excerpt">Equal upload and download speeds are essential for video calls, cloud storage, and remote collaboration.</p>
-                        <a href="about.html" class="blog-link">Read Article <span class="material-icons" style="font-size:16px;">arrow_forward</span></a>
+                        <p class="blog-excerpt">Equal upload and download speeds are essential for video calls, cloud
+                            storage, and remote collaboration.</p>
+                        <a href="about.html" class="blog-link">Read Article <span class="material-icons"
+                                style="font-size:16px;">arrow_forward</span></a>
                     </div>
                 </div>
                 <div class="blog-card animate-on-scroll fade-up stagger-3">
-                    <div class="blog-img"><img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&q=80&w=600" alt="IPTV Entertainment"></div>
+                    <div class="blog-img"><img
+                            src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&q=80&w=600"
+                            alt="IPTV Entertainment"></div>
                     <div class="blog-body">
                         <span class="blog-cat">Entertainment</span>
                         <h3 class="blog-title">Pioneer IPTV: Watch 350+ Channels Without a Set-Top Box</h3>
-                        <p class="blog-excerpt">Our bundled IPTV service delivers HD channels app-based &mdash; no extra hardware needed.</p>
-                        <a href="services.html" class="blog-link">Read Article <span class="material-icons" style="font-size:16px;">arrow_forward</span></a>
+                        <p class="blog-excerpt">Our bundled IPTV service delivers HD channels app-based &mdash; no extra
+                            hardware needed.</p>
+                        <a href="services.html" class="blog-link">Read Article <span class="material-icons"
+                                style="font-size:16px;">arrow_forward</span></a>
                     </div>
                 </div>
             </div>
@@ -334,8 +665,10 @@
             <div class="newsletter-inner animate-on-scroll fade-up">
                 <div class="newsletter-icon">&#9993;</div>
                 <h2 style="color:#fff;margin-bottom:var(--space-sm);">Stay in the Loop</h2>
-                <p style="color:rgba(255,255,255,.65);margin-bottom:var(--space-xl);font-size:.95rem;">Get the latest plan updates, limited-time offers, and fiber expansion announcements.</p>
-                <form class="newsletter-form" onsubmit="event.preventDefault(); showCustomNotification('Subscribed!', 'You are now subscribed to our newsletter.')">
+                <p style="color:rgba(255,255,255,.65);margin-bottom:var(--space-xl);font-size:.95rem;">Get the latest
+                    plan updates, limited-time offers, and fiber expansion announcements.</p>
+                <form class="newsletter-form"
+                    onsubmit="event.preventDefault(); showCustomNotification('Subscribed!', 'You are now subscribed to our newsletter.')">
                     <input type="email" class="newsletter-input" placeholder="Your email address" required>
                     <button type="submit" class="btn btn-secondary">Subscribe</button>
                 </form>
@@ -351,11 +684,16 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <img src="images/logo.png" alt="SREE DVR Broadband" class="logo-img">
-                    <p class="footer-tagline">SREE DVR Broadband Pvt. Ltd. — Kurnool's premier fiber internet and IPTV service provider, delivering lightning-fast connectivity since 2018.</p>
+                    <p class="footer-tagline">SREE DVR Broadband Pvt. Ltd. — Kurnool's premier fiber internet and IPTV
+                        service provider, delivering lightning-fast connectivity since 2018.</p>
                     <div class="social-links">
-                        <a href="#" class="social-icon"><i class="material-icons" style="font-size:18px;">facebook</i></a>
+                        <a href="#" class="social-icon"><i class="material-icons"
+                                style="font-size:18px;">facebook</i></a>
                         <a href="#" class="social-icon">
-                            <svg style="width:16px;height:16px;fill:currentColor;" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            <svg style="width:16px;height:16px;fill:currentColor;" viewBox="0 0 24 24">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
                         </a>
                         <a href="https://wa.me/919133310422" target="_blank" class="social-icon">
                             <i class="material-icons" style="font-size:18px;">chat</i>
@@ -378,7 +716,8 @@
                 <div>
                     <h3 class="footer-heading">Contact Us</h3>
                     <ul class="footer-contact">
-                        <li><i class="material-icons">room</i><span>2nd Floor, S.V. Complex, R.S. Road, Kurnool - 518001</span></li>
+                        <li><i class="material-icons">room</i><span>2nd Floor, S.V. Complex, R.S. Road, Kurnool -
+                                518001</span></li>
                         <li><i class="material-icons">phone</i><span>08518-442525</span></li>
                         <li><i class="material-icons">chat</i><span>+91 9133310422</span></li>
                         <li><i class="material-icons">email</i><span>sreedvrbroadbandpvtltd@gmail.com</span></li>
@@ -388,7 +727,9 @@
                 <div>
                     <h3 class="footer-heading">Locate Us</h3>
                     <div class="map-container-footer">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.077271926665!2d78.03730221480572!3d15.828695989033327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb5e3afdc7e9be1%3A0x64319647485013ef!2sHotel%20SV%20Regency%20Kurnool!5e0!3m2!1sen!2sin!4v1689182390234!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.077271926665!2d78.03730221480572!3d15.828695989033327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb5e3afdc7e9be1%3A0x64319647485013ef!2sHotel%20SV%20Regency%20Kurnool!5e0!3m2!1sen!2sin!4v1689182390234!5m2!1sen!2sin"
+                            allowfullscreen="" loading="lazy"></iframe>
                     </div>
                     <div style="margin-top:var(--space-md);">
                         <h3 class="footer-heading">Legal</h3>
@@ -403,7 +744,8 @@
 
             <div class="footer-bottom">
                 <p>&copy; 2026 SREE DVR Broadband Pvt. Ltd. All Rights Reserved.</p>
-                <p class="developer-credit">Developed by <a href="https://www.firststepdigitalagency.com" target="_blank">FirstStep Digital Agency</a></p>
+                <p class="developer-credit">Developed by <a href="https://www.firststepdigitalagency.com"
+                        target="_blank">FirstStep Digital Agency</a></p>
             </div>
         </div>
     </footer>
@@ -424,8 +766,10 @@
     <!-- Mobile Sticky Bar -->
     <div class="mobile-sticky-bar">
         <a href="tel:08518442525" class="bar-call"><span class="material-icons">phone</span> Call</a>
-        <a href="https://wa.me/919133310422" class="bar-whatsapp" target="_blank"><span class="material-icons">chat</span> WhatsApp</a>
-        <button onclick="openEnquiryModal('Mobile Bar')" class="bar-book"><span class="material-icons">bolt</span> Book Now</button>
+        <a href="https://wa.me/919133310422" class="bar-whatsapp" target="_blank"><span
+                class="material-icons">chat</span> WhatsApp</a>
+        <button onclick="openEnquiryModal('Mobile Bar')" class="bar-book"><span class="material-icons">bolt</span> Book
+            Now</button>
     </div>
 
     <!-- Enquiry Modal -->
@@ -442,7 +786,8 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="clientPhone">Mobile Number</label>
-                    <input type="tel" id="clientPhone" class="form-control" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+                    <input type="tel" id="clientPhone" class="form-control" placeholder="10-digit mobile number"
+                        pattern="[0-9]{10}" required>
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="clientPlan">Preferred Plan</label>
@@ -456,7 +801,8 @@
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="clientArea">Your Area / Locality</label>
-                    <input type="text" id="clientArea" class="form-control" placeholder="e.g. Budhawara Peta, Kurnool" required>
+                    <input type="text" id="clientArea" class="form-control" placeholder="e.g. Budhawara Peta, Kurnool"
+                        required>
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="clientMsg">Notes (Optional)</label>
@@ -478,4 +824,5 @@
     <script type="module" src="js/main-pages.js"></script>
 
 </body>
+
 </html>
