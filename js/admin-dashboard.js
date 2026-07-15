@@ -4,6 +4,7 @@
 
 import { DVR_SEED_DATA } from './seed-data.js';
 import { initializeFirebase, auth, db, isFirebaseReady } from './firebase-config.js';
+import { showCustomNotification } from './app.js';
 
 // Local storage session key for admin auth
 const AUTH_SESSION_KEY = "dvr_admin_session";

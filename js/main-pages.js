@@ -412,7 +412,7 @@ function buildPlanCard(plan) {
         </div>
         <ul class="plan-features">
             ${plan.features.map(f => `<li><i class="material-icons">check_circle</i><span>${f}</span></li>`).join('')}
-            <li><i class="material-icons">lock</i><span>Refundable Deposit: ₹${plan.deposit}</span></li>
+            <li><i class="material-icons">lock</i><span>Condition's apply</span></li>
             <li><i class="material-icons">settings_input_hdmi</i><span>IPTV Mode: ${plan.dishType || 'No Dish'}</span></li>
         </ul>
         ${ottLogosHTML ? `<div class="plan-otts">${ottLogosHTML}</div>` : ''}
