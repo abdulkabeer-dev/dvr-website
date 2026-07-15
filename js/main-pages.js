@@ -388,7 +388,7 @@ function buildPlanCard(plan) {
     } else if (plan.name.toLowerCase().includes("100 mbps")) {
         planImage = "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=400&h=180";
     } else if (plan.name.toLowerCase().includes("200 mbps")) {
-        planImage = "https://images.unsplash.com/photo-1574375927938-d5a98e8edd86?auto=format&fit=crop&q=80&w=400&h=180";
+        planImage = "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?auto=format&fit=crop&q=80&w=400&h=180";
     } else if (plan.name.toLowerCase().includes("300 mbps")) {
         planImage = "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=400&h=180";
     } else {
