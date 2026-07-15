@@ -400,14 +400,30 @@ section { position: relative; }
     font-size: 0.82rem;
     flex-wrap: wrap;
     gap: var(--space-md);
-    color: var(--gray-500);
+    color: var(--gray-400);
     position: relative;
 }
 
 .footer-bottom-links { display: flex; gap: var(--space-lg); }
 
-.footer-bottom-links a { color: var(--gray-500); }
+.footer-bottom-links a { color: var(--gray-400); }
 .footer-bottom-links a:hover { color: var(--secondary); }
+
+.developer-credit {
+    color: var(--gray-400);
+    font-size: 0.82rem;
+}
+
+.developer-credit a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color var(--transition-fast);
+}
+
+.developer-credit a:hover {
+    color: var(--secondary-light);
+}
 
 /* ============================================================
    GLOBAL SECTION HEADERS
