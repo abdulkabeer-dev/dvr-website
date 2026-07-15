@@ -933,7 +933,7 @@
 /* --- Sticky CTA Bar --- */
 .sticky-cta-bar {
     position: fixed;
-    top: var(--header-height);
+    top: 68px;
     left: 0;
     width: 100%;
     background: #fff;
