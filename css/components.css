@@ -1306,3 +1306,96 @@ select.form-control {
     color: var(--secondary-dark);
     border: 1px solid rgba(247,148,29,0.3);
 }
+
+/* --- Mobile Drawer Navigation (Direct body child to prevent WebKit sticky-header containing block bug) --- */
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: min(300px, 85%);
+    height: 100vh;
+    background: #fff;
+    z-index: var(--z-tooltip); /* 2000 */
+    box-shadow: -8px 0 40px rgba(6,38,75,0.15);
+    transition: right var(--transition-normal);
+    display: none;
+    flex-direction: column;
+    padding: var(--space-xl);
+}
+
+.mobile-drawer.open {
+    right: 0 !important;
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--gray-100);
+    padding-bottom: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.drawer-header img {
+    height: 40px;
+    width: auto;
+}
+
+.drawer-close {
+    background: none;
+    border: none;
+    font-size: 2.2rem;
+    color: var(--navy);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.drawer-menu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.drawer-link {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--navy);
+    text-decoration: none;
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid transparent;
+    transition: all var(--transition-fast);
+}
+
+.drawer-link.active, .drawer-link:hover {
+    color: var(--primary);
+    padding-left: 5px;
+}
+
+/* Drawer overlay backdrop */
+.drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(6, 38, 75, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: calc(var(--z-tooltip) - 1); /* 1999 */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-normal);
+}
+
+.drawer-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none !important;
+    }
+    .mobile-drawer {
+        display: flex;
+    }
+}
+

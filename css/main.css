@@ -477,22 +477,8 @@ section { position: relative; }
     .menu-toggle { display: flex; flex-direction: column; }
 
     .nav-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: min(320px, 85%);
-        height: 100vh;
-        background: #fff;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 100px var(--space-xl) var(--space-xl);
-        gap: var(--space-lg);
-        transition: right var(--transition-normal);
-        box-shadow: -8px 0 40px rgba(6,38,75,0.15);
-        z-index: var(--z-overlay);
+        display: none !important;
     }
-
-    .nav-menu.open { right: 0; }
 
     .nav-link { font-size: 1.1rem; width: 100%; }
 

@@ -28,7 +28,7 @@
             <a href="index.html" class="brand-logo">
                 <img src="images/logo.png" alt="SREE DVR Broadband">
             </a>
-            <nav class="nav-menu" id="navMenu">
+            <nav class="nav-menu desktop-only" id="navMenu">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="about.html" class="nav-link">About</a>
                 <a href="plans.html" class="nav-link">Plans</a>
@@ -43,6 +43,30 @@
             </button>
         </div>
     </header>
+
+    <!-- Mobile Drawer Overlay -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <a href="index.html" class="brand-logo">
+                <img src="images/logo.png" alt="SREE DVR Broadband">
+            </a>
+            <button class="drawer-close" id="drawerClose" aria-label="Close Menu">&times;</button>
+        </div>
+        <nav class="drawer-menu">
+            <a href="index.html" class="drawer-link ">Home</a>
+            <a href="about.html" class="drawer-link ">About</a>
+            <a href="plans.html" class="drawer-link ">Plans</a>
+            <a href="services.html" class="drawer-link ">Services</a>
+            <a href="coverage.html" class="drawer-link ">Coverage</a>
+            <a href="contact.html" class="drawer-link active">Contact</a>
+            <a href="https://myaccount.dvrbroadband.net/" class="drawer-link" target="_blank">My Account</a>
+            <button onclick="openEnquiryModal('Mobile Drawer')" class="btn btn-secondary btn-block" style="margin-top: var(--space-lg);">Get Connected</button>
+        </nav>
+    </div>
+
 
     <!-- Page Hero -->
     <section class="page-hero">

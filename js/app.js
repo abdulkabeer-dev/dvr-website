@@ -108,20 +108,46 @@ function applySettingsToDOM() {
 // ------------------------------------------------------------
 function setupMobileMenu() {
     const menuToggle = document.getElementById("menuToggle");
-    const navMenu = document.getElementById("navMenu");
+    const mobileDrawer = document.getElementById("mobileDrawer");
+    const drawerClose = document.getElementById("drawerClose");
+    const drawerOverlay = document.getElementById("drawerOverlay");
     
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener("click", () => {
-            menuToggle.classList.toggle("active");
-            navMenu.classList.toggle("open");
-        });
+    function openDrawer() {
+        if (mobileDrawer) mobileDrawer.classList.add("open");
+        if (drawerOverlay) drawerOverlay.classList.add("open");
+        if (menuToggle) menuToggle.classList.add("active");
+        document.body.style.overflow = "hidden"; // lock page scroll
+    }
 
-        // Close menu on link click
-        navMenu.querySelectorAll(".nav-link").forEach(link => {
-            link.addEventListener("click", () => {
-                menuToggle.classList.remove("active");
-                navMenu.classList.remove("open");
-            });
+    // Exported globally so that modal triggers can call it to dismiss the drawer
+    window.closeMobileDrawer = function() {
+        if (mobileDrawer) mobileDrawer.classList.remove("open");
+        if (drawerOverlay) drawerOverlay.classList.remove("open");
+        if (menuToggle) menuToggle.classList.remove("active");
+        document.body.style.overflow = ""; // unlock page scroll
+    };
+
+    if (menuToggle) {
+        menuToggle.addEventListener("click", () => {
+            if (mobileDrawer && mobileDrawer.classList.contains("open")) {
+                window.closeMobileDrawer();
+            } else {
+                openDrawer();
+            }
+        });
+    }
+
+    if (drawerClose) {
+        drawerClose.addEventListener("click", window.closeMobileDrawer);
+    }
+
+    if (drawerOverlay) {
+        drawerOverlay.addEventListener("click", window.closeMobileDrawer);
+    }
+
+    if (mobileDrawer) {
+        mobileDrawer.querySelectorAll(".drawer-link, .btn").forEach(link => {
+            link.addEventListener("click", window.closeMobileDrawer);
         });
     }
 }
