@@ -455,6 +455,7 @@ section { position: relative; }
     color: var(--navy);
     margin-bottom: var(--space-md);
     line-height: 1.2;
+    text-align: center;
 }
 
 .section-title strong,
